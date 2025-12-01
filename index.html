@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toni Rose Susa — Portfolio</title>
+  <meta name="description" content="Portfolio of Toni Rose Susa, software and web developer with a gothic aesthetic." />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Tailwind (for utility classes) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Cursor glow -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Header / Navigation -->
+  <nav class="navbar">
+    <div class="nav-header">
+      <button id="menuToggle" class="menu-toggle" aria-label="Toggle menu">
+        <i class="bi bi-list"></i>
+      </button>
+      <button id="themeBtn" class="theme-toggle" aria-label="Toggle theme">
+        <i class="bi bi-moon-stars"></i>
+      </button>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#artists" class="nav-link">Artists</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#achievements" class="nav-link">Achievements</a></li>
+      <li><a href="#certifications" class="nav-link">Certifications</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+<section id="about" class="hero text-center py-20 fade-section">
+  <h1 class="display-name text-3xl font-cinzel text-red-600 drop-shadow-lg">
+    Third-year BSIT · Web & Software Developer
+  </h1>
+  <p class="subtitle theme-muted mt-2 text-lg">
+    Driven to craft accessible, modern websites with clean layouts and smooth functionality.
+  </p>
+    <div class="intro-buttons flex justify-center gap-10">
+    <a href="#projects" class="button button-primary">View My Work</a>
+    <a href="#contact" class="button button-ghost">Get In Touch</a>
+  </div>
+</section>
+
+<!-- Top Artists -->
+<section id="artists" class="panel fade-section">
+  <h2 class="text-2xl font-cinzel text-red-500 mb-6 text-left">My Top Artists</h2>
+
+  <div class="artist-container mx-auto">
+    <div class="artist-grid">
+
+      <!-- Taylor Swift -->
+<div class="artist-item">
+  <div class="artist-card fade-section" id="ts-card">
+    <div class="artist-inner">
+      <div class="artist-front">
+        <img src="images/Taylor-Swift-darkmode.jpg" alt="Taylor Swift" class="artist-img" id="ts-front-img">
+        <h5 class="artist-name">Taylor Swift</h5>
+        <div class="artist-caption text-center">
+          <p class="artist-reflection">
+            Taylor’s storytelling and evolving eras keep me inspired when tackling complex code or late-night study sessions.
+          </p>
+        </div>
+      </div>
+      <div class="artist-back">
+        <div class="album-wrapper fade-right visible">
+          <img src="images/TS-Reputation.jpg" alt="Taylor Swift Album" class="album-cover" id="ts-albums">
+          <h5 class="album-title" id="ts-album-title">Reputation</h5>
+        </div>
+        <audio id="ts-audio" controls class="mt-2"></audio>
+        <button id="ts-play-btn" class="button mt-2">⏸ Pause</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <!-- Paramore -->
+<div class="artist-item">
+  <div class="artist-card fade-section" id="paramore-card">
+    <div class="artist-inner">
+      <div class="artist-front">
+        <img src="images/Paramore-darkmode.jpg" alt="Paramore" class="artist-img" id="paramore-front-img">
+        <h5 class="artist-name">Paramore</h5>
+        <div class="artist-caption text-center">
+          <p class="artist-reflection">
+            Paramore’s energy keeps me going during long coding sessions and helps me push through tough parts.
+          </p>
+        </div>
+      </div>
+      <div class="artist-back">
+        <div class="album-wrapper fade-right visible">
+          <img src="images/PM-Riot!.jpg" alt="Paramore Album" class="album-cover" id="paramore-albums">
+          <h5 class="album-title" id="paramore-album-title">Riot!</h5>
+        </div>
+        <audio id="paramore-audio" controls class="mt-2"></audio>
+        <button id="paramore-play-btn" class="button mt-2">⏸ Pause</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+      <!-- My Chemical Romance -->
+<div class="artist-item">
+  <div class="artist-card fade-section" id="mcr-card">
+    <div class="artist-inner">
+      <div class="artist-front">
+        <img src="images/MCR-darkmode.jpg" alt="My Chemical Romance" class="artist-img" id="mcr-front-img">
+        <h5 class="artist-name">My Chemical Romance</h5>
+        <div class="artist-caption text-center">
+          <p class="artist-reflection">
+            MCR’s dramatic vibes match my portfolio and spark creativity when I’m polishing designs.
+          </p>
+        </div>
+      </div>
+      <div class="artist-back">
+        <div class="album-wrapper fade-right visible">
+          <img src="images/MCR-The-Black-Parade.jpg" alt="MCR Album" class="album-cover" id="mcr-albums">
+          <h5 class="album-title" id="mcr-album-title">The Black Parade</h5>
+        </div>
+        <audio id="mcr-audio" controls class="mt-2"></audio>
+        <button id="mcr-play-btn" class="button mt-2">⏸ Pause</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+<!-- Skills -->
+<section id="skills" class="skills-panel panel fade-section">
+  <h2 class="text-2xl font-cinzel text-red-500 mb-6 text-left">Skills</h2>
+  <div class="row g-4 justify-content-center">
+
+    <!-- Designer Card -->
+    <div class="col-md-6">
+      <div class="skill-card p-6 rounded-lg shadow-md hover:shadow-red-500/40 transition text-center">
+        <h3 class="text-xl font-cinzel text-yellow-600 mb-2">Designer</h3>
+        <p class="text-gray-400 italic">
+          I design visuals that combine clarity, creativity, and impact.
+        </p>
+        <h4 class="mt-4 text-red-500 font-semibold">What I enjoy designing:</h4>
+        <ul class="list-disc list-inside text-gray-300 mt-2">
+          <li>Interfaces</li>
+          <li>Websites</li>
+          <li>Media layouts</li>
+          <li>Social media graphics</li>
+        </ul>
+        <h4 class="mt-4 text-red-500 font-semibold">Design Tools I use:</h4>
+        <ul class="list-disc list-inside text-gray-300 mt-2">
+          <li>Canva</li>
+          <li>Figma</li>
+          <li>Photoshop</li>
+          <li>Premiere Pro</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Frontend Developer Card -->
+    <div class="col-md-6">
+      <div class="skill-card p-6 rounded-lg shadow-md hover:shadow-red-500/40 transition text-center">
+        <h3 class="text-xl font-cinzel text-yellow-600 mb-2">Frontend Developer</h3>
+        <p class="text-gray-400 italic">
+          I transform ideas into interactive, responsive experiences using clean, maintainable code.
+        </p>
+        <h4 class="mt-4 text-red-500 font-semibold">Languages I work with:</h4>
+        <ul class="list-disc list-inside text-gray-300 mt-2">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>Sass</li>
+        </ul>
+        <h4 class="mt-4 text-red-500 font-semibold">Dev Tools I rely on:</h4>
+        <ul class="list-disc list-inside text-gray-300 mt-2">
+          <li>VS Code</li>
+          <li>Tailwind</li>
+          <li>Bootstrap</li>
+          <li>Github</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="projects-panel panel fade-section">
+  <h2 class="text-2xl font-cinzel text-red-500 mb-6">Projects</h2>
+  <div class="row g-4">
+
+    <!-- School Management System -->
+    <div class="col-md-6">
+      <div class="skill-card p-6 rounded-lg shadow-md hover:shadow-red-500/40 transition">
+        <h5 class="text-lg font-cinzel text-yellow-600 mb-2">
+          <a href="https://github.com/GouuuM/PROJECT-S.W.I.F.T"
+            target="_blank"
+            class="theme-link">School Management System</a></h5>
+        <ul class="list-disc list-inside text-gray-300">
+          <li>Java-based console system</li>
+          <li>Teacher panel</li>
+          <li>Assignments & announcements</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Portfolio UI/UX -->
+    <div class="col-md-6">
+      <div class="skill-card p-6 rounded-lg shadow-md hover:shadow-red-500/40 transition">
+        <h5 class="text-lg font-cinzel text-yellow-600 mb-2">
+          <a href="https://github.com/GouuuM/Webportfolio"
+            target="_blank"
+            class="theme-link">Portfolio UI/UX</a></h5>
+        <ul class="list-disc list-inside text-gray-300">
+          <li>Cursor glow & parallax</li>
+          <li>Theme toggle</li>
+          <li>Webporfolio</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education" class="education-panel panel fade-section">
+  <h2 class="text-2xl font-cinzel text-red-500 mb-6">Education</h2>
+  <div class="row g-4">
+    <div class="col-md-12">
+
+      <!-- College -->
+      <div class="skill-card p-6 rounded-lg shadow-md hover:shadow-red-500/40 transition">
+        <h5 class="text-lg font-cinzel text-yellow-600 mb-2">
+          <a href="https://pcu.edu.ph/" 
+             target="_blank" 
+             class="theme-link">
+            Philippine Christian University — BSIT (2023–Present)
+          </a>
+        </h5>
+        <p>
+          Relevant coursework: Software Development, Database Systems, Web Programming.
+        </p>
+      </div>
+
+      <!-- Senior High -->
+      <div class="skill-card p-6 rounded-lg shadow-md hover:shadow-red-500/40 transition">
+        <h5 class="text-lg font-cinzel text-yellow-600 mb-2">
+          <a href="https://www.facebook.com/mmmhsproudtobeone/" 
+             target="_blank" 
+             class="theme-link">
+            Mariano Marcos Memorial High School — ICT Strand (2017–2019)
+          </a>
+        </h5>
+        <p>
+          Learned foundational web development, including HTML basics, which sparked my interest in programming.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Achievements -->
+<section id="achievements" class="achievements-panel panel fade-section">
+  <h2 class="text-2xl font-cinzel text-red-500 mb-6">Achievements</h2>
+  <div class="row g-4">
+
+    <!-- Worlds 2024 Champion -->
+    <div class="col-md-6">
+      <div class="skill-card p-6 rounded-lg shadow-md hover:shadow-red-500/40 transition relative overflow-hidden">
+        <h5 class="text-lg font-cinzel text-yellow-600 mb-2">
+          Worlds 2024 Champion (League of Legends)
+        </h5>
+        <p>
+          Showcasing technical skill, strategic thinking, and teamwork.
+        </p>
+
+        <!-- Overlay hover media -->
+        <div class="hover-media">
+          <video src="video/The-fifth-trophy.mp4" muted loop playsinline></video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Emerald 1 Rank -->
+    <div class="col-md-6">
+      <div class="skill-card p-6 rounded-lg shadow-md hover:shadow-red-500/40 transition relative overflow-hidden">
+        <h5 class="text-lg font-cinzel text-yellow-600 mb-2">
+          Emerald 1 — League of Legends
+        </h5>
+        <p>
+          Achieving a top-tier rank, demonstrating perseverance, strategic problem-solving, and strong teamwork.
+        </p>
+
+        <!-- Overlay hover media -->
+        <div class="hover-media">
+          <img src="images/Emerald-1.png" alt="Emerald 1 Rank" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Certifications -->
+<section id="certifications" class="certifications-panel panel fade-section">
+  <h2 class="text-2xl font-cinzel text-red-500 mb-6">Certifications</h2>
+  <div class="row g-4">
+
+    <!-- NCII -->
+    <div class="col-md-6">
+      <div class="skill-card p-6 rounded-lg shadow-md hover:shadow-red-500/40 transition">
+        <h5 class="text-lg font-cinzel text-yellow-600 mb-2">NCII</h5>
+        <p>
+          Software & Hardware Systems
+        </p>
+      </div>
+    </div>
+
+    <!-- NCIII -->
+    <div class="col-md-6">
+      <div class="skill-card p-6 rounded-lg shadow-md hover:shadow-red-500/40 transition">
+        <h5 class="text-lg font-cinzel text-yellow-600 mb-2">NCIII</h5>
+        <p>
+         Creative & Digital Graphics Design
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="contact-icons text-center py-6">
+  <a href="mailto:tres.gutentag@gmail.com" class="contact-link" aria-label="Email">
+    <i class="bi bi-envelope-fill"></i>
+  </a>
+  <a href="https://github.com/GouuuM" target="_blank" class="contact-link" aria-label="GitHub">
+    <i class="bi bi-github"></i>
+  </a>
+  <a href="https://www.linkedin.com/in/toni-rose-susa-5b7a26214/" target="_blank" class="contact-link" aria-label="LinkedIn">
+    <i class="bi bi-linkedin"></i>
+  </a>
+  <a href="https://open.spotify.com/user/22264jcdlx3e57dxk75d56tiy" target="_blank" class="contact-link" aria-label="Spotify">
+    <i class="bi bi-spotify"></i>
+  </a>
+  <a href="https://x.com/Gou__Matsuoka__" target="_blank" class="contact-link" aria-label="Twitter/X">
+    <i class="bi bi-twitter-x"></i>
+  </a>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer text-center py-6 border-t" style="border-color: var(--border);">
+  <p class="text-gray-500">© 2025 Toni Rose Susa</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="script.js" defer></script>
+</body>
+</html>
