@@ -19,7 +19,6 @@
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
   <!-- Cursor glow -->
   <div id="cursor-glow" aria-hidden="true"></div>
@@ -54,6 +53,10 @@
   <p class="subtitle theme-muted mt-2 text-lg">
     Driven to craft accessible, modern websites with clean layouts and smooth functionality.
   </p>
+    <div class="intro-buttons flex justify-center gap-10">
+    <a href="#projects" class="button button-primary">View My Work</a>
+    <a href="#contact" class="button button-ghost">Get In Touch</a>
+  </div>
 </section>
 
 <!-- Top Artists -->
@@ -64,82 +67,83 @@
     <div class="artist-grid">
 
       <!-- Taylor Swift -->
-      <div class="artist-card fade-section" id="ts-card">
-        <div class="artist-inner">
-          <div class="artist-front">
-            <img src="images/Taylor-Swift-darkmode.jpg" alt="Taylor Swift" class="artist-img" id="ts-front-img">
-            <h5 class="artist-name">Taylor Swift</h5>
-          </div>
-          <div class="artist-back">
-            <div class="album-wrapper fade-right visible">
-              <img src="images/TS-Reputation.jpg" alt="Taylor Swift Album" class="album-cover" id="ts-albums">
-              <h5 class="album-title" id="ts-album-title">Reputation</h5>
+      <div class="artist-item">
+        <div class="artist-card fade-section" id="ts-card">
+          <div class="artist-inner">
+            <div class="artist-front">
+              <img src="images/Taylor-Swift-darkmode.jpg" alt="Taylor Swift" class="artist-img" id="ts-front-img">
+              <h5 class="artist-name">Taylor Swift</h5>
             </div>
-            <audio id="ts-audio" controls class="mt-2"></audio>
-            <button id="ts-play-btn" class="button mt-2">⏸ Pause</button>
+            <div class="artist-back">
+              <div class="album-wrapper fade-right visible">
+                <img src="images/TS-Reputation.jpg" alt="Taylor Swift Album" class="album-cover" id="ts-albums">
+                <h5 class="album-title" id="ts-album-title">Reputation</h5>
+              </div>
+              <audio id="ts-audio" controls class="mt-2"></audio>
+              <button id="ts-play-btn" class="button mt-2">⏸ Pause</button>
+            </div>
           </div>
         </div>
-        <!-- ✅ Description inside artist-card, outside flip card -->
-        <div class="artist-description fade-section mt-3 text-center">
-          <p class="artist-bio">
+        <!-- ✅ Reflection below the card -->
+        <div class="artist-caption fade-section text-center">
+          <p class="artist-reflection">
             Taylor’s storytelling and evolving eras keep me inspired when tackling complex code or late-night study sessions.
           </p>
         </div>
-        <hr class="artist-divider my-4">
       </div>
 
       <!-- Paramore -->
-      <div class="artist-card fade-section" id="paramore-card">
-        <div class="artist-inner">
-          <div class="artist-front">
-            <img src="images/Paramore-darkmode.jpg" alt="Paramore" class="artist-img" id="paramore-front-img">
-            <h5 class="artist-name">Paramore</h5>
-          </div>
-          <div class="artist-back">
-            <div class="album-wrapper fade-right visible">
-              <img src="images/PM-Riot!.jpg" alt="Paramore Album" class="album-cover" id="paramore-albums">
-              <h5 class="album-title" id="paramore-album-title">Riot!</h5>
+      <div class="artist-item">
+        <div class="artist-card fade-section" id="paramore-card">
+          <div class="artist-inner">
+            <div class="artist-front">
+              <img src="images/Paramore-darkmode.jpg" alt="Paramore" class="artist-img" id="paramore-front-img">
+              <h5 class="artist-name">Paramore</h5>
             </div>
-            <audio id="paramore-audio" controls class="mt-2"></audio>
-            <button id="paramore-play-btn" class="button mt-2">⏸ Pause</button>
+            <div class="artist-back">
+              <div class="album-wrapper fade-right visible">
+                <img src="images/PM-Riot!.jpg" alt="Paramore Album" class="album-cover" id="paramore-albums">
+                <h5 class="album-title" id="paramore-album-title">Riot!</h5>
+              </div>
+              <audio id="paramore-audio" controls class="mt-2"></audio>
+              <button id="paramore-play-btn" class="button mt-2">⏸ Pause</button>
+            </div>
           </div>
         </div>
-        <div class="artist-description fade-section mt-3 text-center">
-          <p class="artist-bio">
+        <div class="artist-caption fade-section text-center">
+          <p class="artist-reflection">
             Paramore’s energy and raw emotion fuel my momentum during long coding sprints, helping me push through challenges.
           </p>
         </div>
-        <hr class="artist-divider my-4">
       </div>
 
       <!-- My Chemical Romance -->
-      <div class="artist-card fade-section" id="mcr-card">
-        <div class="artist-inner">
-          <div class="artist-front">
-            <img src="images/MCR-darkmode.jpg" alt="My Chemical Romance" class="artist-img" id="mcr-front-img">
-            <h5 class="artist-name">My Chemical Romance</h5>
-          </div>
-          <div class="artist-back">
-            <div class="album-wrapper fade-right visible">
-              <img src="images/MCR-The-Black-Parade.jpg" alt="MCR Album" class="album-cover" id="mcr-albums">
-              <h5 class="album-title" id="mcr-album-title">The Black Parade</h5>
+      <div class="artist-item">
+        <div class="artist-card fade-section" id="mcr-card">
+          <div class="artist-inner">
+            <div class="artist-front">
+              <img src="images/MCR-darkmode.jpg" alt="My Chemical Romance" class="artist-img" id="mcr-front-img">
+              <h5 class="artist-name">My Chemical Romance</h5>
             </div>
-            <audio id="mcr-audio" controls class="mt-2"></audio>
-            <button id="mcr-play-btn" class="button mt-2">⏸ Pause</button>
+            <div class="artist-back">
+              <div class="album-wrapper fade-right visible">
+                <img src="images/MCR-The-Black-Parade.jpg" alt="MCR Album" class="album-cover" id="mcr-albums">
+                <h5 class="album-title" id="mcr-album-title">The Black Parade</h5>
+              </div>
+              <audio id="mcr-audio" controls class="mt-2"></audio>
+              <button id="mcr-play-btn" class="button mt-2">⏸ Pause</button>
+            </div>
           </div>
         </div>
-        <div class="artist-description fade-section mt-3 text-center">
-          <p class="artist-bio">
-            MCR’s dramatic soundscapes and gothic aesthetic resonate with my portfolio’s vibe, sparking creativity in design polish.
+        <div class="artist-caption fade-section text-center">
+          <p class="artist-reflection">
+            MCR’s dramatic soundscapes and aesthetic resonate with my portfolio’s vibe, sparking creativity in design polish.
           </p>
         </div>
-        <hr class="artist-divider my-4">
       </div>
-
     </div>
   </div>
 </section>
-
 
 <!-- Skills -->
 <section id="skills" class="skills-panel panel fade-section">

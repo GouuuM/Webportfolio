@@ -423,7 +423,6 @@
   });
 })();
 
-
 (() => {
   /* ===== SMOOTH SCROLLING (extra utility) ===== */
   const navLinks = document.querySelectorAll('.nav-link');
