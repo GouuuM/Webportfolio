@@ -9,7 +9,7 @@
 
   --accent: #a83232;
   --accent-light: #d94c4c;
-  --secondary: #c0a060;
+  --secondary: #f3b109;
 
   --shadow: rgba(0, 0, 0, 0.7);
   --border: #2a2a33;
@@ -27,7 +27,7 @@
 
   --accent: #6a1b9a;
   --accent-light: #9c27b0;
-  --secondary: #ffe4a1;
+  --secondary: #f3b109;
 
   --shadow: rgba(0, 0, 0, 0.35);
   --border: #dcd6cf;
@@ -47,6 +47,9 @@ html, body {
   line-height: 1.6;
   transition: background 0.4s ease, color 0.4s ease;
 }
+html {
+  scroll-behavior: smooth;
+}
 .about-page {
   max-width: 900px;
   margin: 0 auto;
@@ -61,44 +64,6 @@ h1, h2, h3, h4, h5 {
 header.intro h1,
 section h2 {
   font-family: "Cinzel", serif;
-}
-
-/* ===== FADE REVEAL ===== */
-.fade-section {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.fade-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ===== FADE-RIGHT ANIMATION FOR ALBUMS ===== */
-.fade-right {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  will-change: opacity, transform;
-}
-.fade-right.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* ===== HERO / HEADER ===== */
-header.intro {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-header.intro h1 {
-  font-size: 3rem;
-  color: var(--accent-light);
-  text-shadow: 0 0 12px rgba(217, 76, 76, 0.4);
-}
-header.intro p {
-  color: var(--text-muted);
-  font-size: 1.2rem;
 }
 
 /* ===== SECTION TITLES ===== */
@@ -144,32 +109,54 @@ section p {
   opacity: 1;
 }
 
-/* ===== LINKS ===== */
-a {
-  color: var(--secondary);
-  text-decoration: none;
-  transition: color 0.3s ease;
+/* ===== FADE REVEAL ===== */
+.fade-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
-a:hover {
-  color: var(--accent-light);
-  text-decoration: underline;
-}
-
-/* Theme-aware nav links */
-.theme-link {
-  color: var(--text);
-  transition: color 0.3s ease;
-}
-.theme-link:hover {
-  color: var(--accent-light);
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* ===== FOOTER BASE ===== */
-footer {
+/* ===== FADE-RIGHT ANIMATION FOR ALBUMS ===== */
+.fade-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+.fade-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ===== SECTION IMAGE STYLING ===== */
+section img {
+  max-width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  margin: 1rem 0;
+  transition: transform 0.3s ease;
+}
+section img:hover {
+  transform: scale(1.03);
+}
+
+/* ===== HERO / HEADER ===== */
+header.intro {
   text-align: center;
-  margin-top: 3rem;
+  margin-bottom: 2.5rem;
+}
+header.intro h1 {
+  font-size: 3rem;
+  color: var(--accent-light);
+  text-shadow: 0 0 12px rgba(217, 76, 76, 0.4);
+}
+header.intro p {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 1.2rem;
 }
 
 /* ===== PANELS ===== */
@@ -185,7 +172,7 @@ footer {
 }
 .panel:hover {
   background: var(--hover);
-  box-shadow: 0 0 28px rgba(168,50,50,0.35);
+  box-shadow: 0 0 28px rgba(168, 50, 50, 0.35);
 }
 
 /* ===== BUTTONS ===== */
@@ -281,6 +268,8 @@ footer {
   border-radius: 10px;
   padding-bottom: 1rem;
   height: auto;
+  min-width: none;
+  perspective: 1000px;
 }
 .artist-inner {
   position: relative;
@@ -307,12 +296,24 @@ footer {
   justify-content: space-between;
   overflow: hidden;
 }
-.artist-front { z-index: 2; }
+.artist-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  z-index: 2;
+  position: relative;
+}
 .artist-back {
   transform: rotateY(180deg);
   text-align: center;
   overflow-y: auto;
-  padding-bottom: 1rem 1rem 2rem;
+  padding: 1rem 1rem 2rem;
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  transition: transform 0.6s ease;
 }
 .artist-insights {
   text-align: center;
@@ -349,7 +350,7 @@ footer {
   font-size: 1rem;
   text-align: center;
   padding: 0 0.5rem;
-  word-wrap: break-word;
+  word-break: break-word;
   line-height: 1.2;
 }
 
@@ -384,24 +385,50 @@ footer {
   color: var(--text);
   text-align: center;
 }
+
 .artist-caption {
-  margin-top: 0.3rem;
-  margin-bottom: 0.1rem;
-  max-width: 240px;
-  text-align: center;
+  margin-top: 0.5rem;
   padding: 0 1rem;
+  max-width: 240px;
+  width: 100%;
 }
+
 .artist-reflection {
   font-size: 0.9rem;
   font-style: italic;
   color: var(--text-muted);
   line-height: 1.3;
+  text-align: center;
+  white-space: normal;
+  word-break: break-word;
 }
+
 .artist-item {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.artist-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+  overflow: hidden; /* ✅ prevents overflow */
+}
+
+.artist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: start;
+  width: 100%;
+  max-width: 100%; /* ✅ ensures it doesn't stretch beyond container */
+  box-sizing: border-box;
+}
+
+/* Divider line before reflection */
 .artist-caption::before {
   content: "";
   display: block;
@@ -411,7 +438,6 @@ footer {
   background-color: var(--border-muted);
   opacity: 0.3;
 }
-
 
 /* ===== MOBILE: 320px, 375px, 425px ===== */
 @media (max-width: 425px) {
@@ -427,6 +453,7 @@ footer {
   .artist-card {
     max-width: 160px;
     height: 220px;
+    
   }
   .album-cover {
     width: 110px;
@@ -510,11 +537,11 @@ footer {
   }
   .artist-card {
     max-width: 240px;
-    height: 320px;
+    height: 420px;
   }
   .album-cover {
-    width: 160px;
-    height: 160px;
+    width: 140px;
+    height: 140px;
   }
   .artist-grid {
     display: grid;
@@ -539,22 +566,6 @@ footer {
   background: var(--accent-light);
 }
 
-/* ===== ADDITIONAL SECTION STYLES ===== */
-section p {
-  margin-bottom: 1rem;
-  color: var(--text);
-}
-section img {
-  max-width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.3);
-  margin: 1rem 0;
-  transition: transform 0.3s ease;
-}
-section img:hover {
-  transform: scale(1.03);
-}
-
 /* ===== HOVER EFFECTS ===== */
 .button, .button-ghost {
   cursor: pointer;
@@ -564,11 +575,6 @@ section img:hover {
 }
 .button:active, .button-ghost:active {
   transform: translateY(1px);
-}
-
-/* ===== SMOOTH SCROLLING ===== */
-html {
-  scroll-behavior: smooth;
 }
 
 /* ===== DARK MODE SPECIFIC ===== */
@@ -627,9 +633,9 @@ html {
   color: #000000;
 }
 
-/* ===== LIGHT MODE OVERRIDE FOR SKILL CARD TITLES ===== */
+/* LIGHT MODE OVERRIDE */
 .light-mode .skills-panel h3 {
-  color: var(--secondary); /* antique gold */
+   color: #ca8a04;
 }
 
 /* ===== LIGHT MODE BUTTONS + LINKS ===== */
@@ -642,7 +648,7 @@ html {
   border-color: var(--accent);
 }
 .light-mode .theme-link {
-  color: var(--text);
+  color: var(--secondary);
 }
 .light-mode .theme-link:hover {
   color: var(--accent);
@@ -718,7 +724,7 @@ html {
   color: var(--accent-light);
 }
 
-/* ===== RESPONSIVE BREAKPOINTS ===== */
+/* ===== RESPONSIVE BREAKPOINTS FOR NAV ===== */
 @media (max-width: 768px) {
   .nav-menu {
     display: none;
@@ -746,22 +752,20 @@ html {
   }
 }
 
+/* ===== INTRO SECTION ===== */
 .intro-section {
   padding: 4rem 2rem;
   background-color: var(--bg-dark);
 }
-
 .intro-section h1 {
   font-size: 2.5rem;
   font-weight: bold;
   color: var(--text);
 }
-
 .intro-section p {
   font-size: 1.1rem;
   color: var(--text-muted);
 }
-
 .intro-buttons .button {
   padding: 0.75rem 1.5rem;
   border-radius: 6px;
@@ -769,11 +773,21 @@ html {
   transition: background 0.3s ease;
 }
 
-.button-primary {
-  background-color: var(--accent);
-  color: var(--bg-dark);
+/* ===== INTRO BUTTONS ===== */
+.intro-buttons .button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.3s ease;
 }
 
+/* ===== BUTTON PRIMARY ===== */
+.button-primary {
+  background-color: var(--accent);
+  color: var(--bg);
+}
+
+/* ===== BUTTON GHOST (Intro Override) ===== */
 .button-ghost {
   background-color: transparent;
   border: 2px solid var(--text-muted);
