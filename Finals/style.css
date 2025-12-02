@@ -299,7 +299,6 @@ section p {
 /* ===========================
    ANIMATIONS (Fade)
 =========================== */
-
 /* Fade-up (generic sections) */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -342,7 +341,6 @@ section p {
 /* ===========================
    STAGGERED DELAYS
 =========================== */
-
 /* Artist cards stagger */
 #ts-card.fade-right.visible {
   animation-delay: 0.2s;
@@ -367,7 +365,6 @@ section p {
 .skill-card:nth-child(4).fade-right.visible {
   animation-delay: 0.8s;
 }
-
 /* ===========================
    BUTTONS
 =========================== */
@@ -549,7 +546,14 @@ section p {
   justify-content: center;
   height: 100%;
   width: 100%;
-  transition: opacity 0.5s ease-in-out;
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.album-wrapper.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* ===========================
