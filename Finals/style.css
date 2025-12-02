@@ -1,4 +1,6 @@
-/* ===== THEME VARIABLES ===== */
+/* ===========================
+   THEME VARIABLES
+=========================== */
 :root {
   --bg: #0a0a0c;
   --bg-soft: #111115;
@@ -34,10 +36,11 @@
   --hover: #f1ece4;
 }
 
-/* ===== RESET & BASE ===== */
-* {
-  box-sizing: border-box;
-}
+/* ===========================
+   RESET & BASE
+=========================== */
+* { box-sizing: border-box; }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -47,135 +50,327 @@ html, body {
   line-height: 1.6;
   transition: background 0.4s ease, color 0.4s ease;
 }
-html {
-  scroll-behavior: smooth;
-}
+
+html { scroll-behavior: smooth; }
+
 .about-page {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
-
-/* ===== TYPOGRAPHY ===== */
+/* ===========================
+   TYPOGRAPHY
+=========================== */
 h1, h2, h3, h4, h5 {
   margin: 0 0 0.5rem;
 }
+
 .font-cinzel,
 header.intro h1,
 section h2 {
   font-family: "Cinzel", serif;
 }
 
-/* ===== SECTION TITLES ===== */
+/* ===========================
+   SECTION TITLES
+=========================== */
 section h2 {
   font-size: 1.8rem;
   margin-bottom: 0.8rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 2px solid var(--accent-light); /* enhanced visibility */
   padding-bottom: 0.4rem;
   color: var(--accent-light);
   text-shadow: 0 0 8px rgba(217,76,76,0.3);
 }
+
 section p {
   margin-bottom: 1rem;
   color: var(--text-muted);
 }
-
-/* ===== ACHIEVEMENTS OVERLAY MEDIA ===== */
-.skill-card {
-  position: relative;
-  overflow: hidden;
-}
-.hover-media {
-  position: absolute;
-  inset: 0; /* cover the whole card */
-  opacity: 0;
-  transition: opacity 0.4s ease;
+/* ===========================
+   HERO SECTION
+=========================== */
+.hero-panel {
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.6); /* dark overlay */
+  padding: 4rem 2rem;
+  background: var(--bg-panel);
+  transition: background 0.3s ease;
 }
 
-.hover-media img,
-.hover-media video {
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 8px;
-  box-shadow: 0 0 16px rgba(217, 76, 76, 0.5); /* red glow */
+.hero-wrapper {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
 }
 
-/* Reveal on hover */
-.skill-card:hover .hover-media {
-  opacity: 1;
+.hero-title {
+  font-size: 2rem;
 }
 
-/* ===== FADE REVEAL ===== */
+.hero-title span {
+  color: #ef4444; /* red in dark mode */
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #ef4444; /* red always */
+}
+
+.hero-description {
+  font-size: 1rem;
+  color: var(--text);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Light mode overrides */
+.light-mode .hero-panel {
+  background: var(--bg-soft);
+}
+
+.light-mode .hero-title span {
+  color: #a855f7; /* purple in light mode */
+}
+
+.light-mode .hero-description {
+  color: #000000;
+}
+/* ===========================
+   EDUCATION SECTION
+=========================== */
+.education-panel {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  transition: background 0.3s ease;
+}
+
+.education-wrapper {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+
+.education-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.edu-block {
+  background: var(--bg-soft);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.edu-block:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 18px var(--accent);
+}
+
+.edu-block h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+.edu-block p {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.edu-years {
+  font-size: 0.9rem;
+  color: var(--secondary);
+}
+
+/* Light mode overrides */
+.light-mode .education-panel {
+  background: var(--bg-soft);
+}
+
+.light-mode .edu-block {
+  background: #ffffff;
+  box-shadow: 0 0 12px rgba(0,0,0,0.15);
+}
+
+.light-mode .edu-block h3,
+.light-mode .edu-block p,
+.light-mode .edu-years {
+  color: #000000;
+}
+/* ===========================
+   SKILLS SECTION
+=========================== */
+.skills-panel {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  transition: background 0.3s ease;
+}
+
+.skills-wrapper {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.skills-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* Responsive grid */
+@media (min-width: 768px) {
+  .skills-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .skills-content {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.skill-block {
+  background: var(--bg-soft);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.skill-block:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 18px var(--accent);
+}
+
+.skill-block h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+.skill-block p {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.skill-block ul {
+  margin-left: 1rem;
+  color: var(--text);
+}
+
+/* Light mode overrides */
+.light-mode .skills-panel {
+  background: var(--bg-soft);
+}
+
+.light-mode .skill-block {
+  background: #ffffff;
+  box-shadow: 0 0 12px rgba(0,0,0,0.15);
+}
+
+.light-mode .skill-block h3,
+.light-mode .skill-block p,
+.light-mode .skill-block ul {
+  color: #000000;
+}
+
+/* Optional override for skill titles */
+.light-mode .skills-panel h3 {
+  color: #ca8a04;
+}
+/* ===========================
+   ANIMATIONS (Fade)
+=========================== */
+
+/* Fade-up (generic sections) */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 .fade-section {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 .fade-section.visible {
-  opacity: 1;
-  transform: translateY(0);
+  animation: fadeUp 0.6s ease forwards;
 }
 
-/* ===== FADE-RIGHT ANIMATION FOR ALBUMS ===== */
+/* Fade-up (titles) */
+@keyframes fadeUpTitle {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.fade-up.visible {
+  animation: fadeUpTitle 0.6s ease forwards;
+}
+
+/* Fade-right (cards/content) */
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
 .fade-right {
   opacity: 0;
   transform: translateX(40px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  will-change: opacity, transform;
 }
 .fade-right.visible {
-  opacity: 1;
-  transform: translateX(0);
+  animation: fadeRight 0.6s ease forwards;
 }
 
-/* ===== SECTION IMAGE STYLING ===== */
-section img {
-  max-width: 100%;
-  border-radius: 8px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.3);
-  margin: 1rem 0;
-  transition: transform 0.3s ease;
+/* ===========================
+   STAGGERED DELAYS
+=========================== */
+
+/* Artist cards stagger */
+#ts-card.fade-right.visible {
+  animation-delay: 0.2s;
 }
-section img:hover {
-  transform: scale(1.03);
+#paramore-card.fade-right.visible {
+  animation-delay: 0.4s;
+}
+#mcr-card.fade-right.visible {
+  animation-delay: 0.6s;
 }
 
-/* ===== HERO / HEADER ===== */
-header.intro {
-  text-align: center;
-  margin-bottom: 2.5rem;
+/* Achievements skill cards stagger */
+.skill-card:nth-child(1).fade-right.visible {
+  animation-delay: 0.2s;
 }
-header.intro h1 {
-  font-size: 3rem;
-  color: var(--accent-light);
-  text-shadow: 0 0 12px rgba(217, 76, 76, 0.4);
+.skill-card:nth-child(2).fade-right.visible {
+  animation-delay: 0.4s;
 }
-header.intro p {
-  color: var(--text-muted);
-  font-size: 1.2rem;
+.skill-card:nth-child(3).fade-right.visible {
+  animation-delay: 0.6s;
 }
-
-/* ===== PANELS ===== */
-.panel {
-  background: var(--bg-panel);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 2rem;
-  margin: 3rem auto;
-  max-width: 900px;
-  box-shadow: 0 0 20px var(--shadow);
-  transition: background 0.3s ease, box-shadow 0.3s ease;
-}
-.panel:hover {
-  background: var(--hover);
-  box-shadow: 0 0 28px rgba(168, 50, 50, 0.35);
+.skill-card:nth-child(4).fade-right.visible {
+  animation-delay: 0.8s;
 }
 
-/* ===== BUTTONS ===== */
+/* ===========================
+   BUTTONS
+=========================== */
 .button {
   display: inline-block;
   background: var(--accent);
@@ -194,15 +389,18 @@ header.intro p {
   text-overflow: ellipsis;
   cursor: pointer;
 }
+
 .button:hover {
   background: var(--accent-light);
   box-shadow: 0 0 12px rgba(217,76,76,0.35);
   transform: translateY(-2px);
 }
+
 .button:active {
   transform: translateY(1px);
 }
 
+/* Ghost button */
 .button-ghost {
   background: transparent;
   color: var(--accent-light);
@@ -210,16 +408,40 @@ header.intro p {
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.05s ease;
   cursor: pointer;
 }
+
 .button-ghost:hover {
   background: rgba(217,76,76,0.1);
   border-color: var(--accent-light);
   transform: translateY(-2px);
 }
+
 .button-ghost:active {
   transform: translateY(1px);
 }
 
-/* ===== CURSOR GLOW ===== */
+/* Intro section overrides */
+.intro-buttons .button {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+/* Primary button */
+.button-primary {
+  background-color: var(--accent);
+  color: var(--bg);
+}
+
+/* Ghost button (intro override) */
+.button-ghost {
+  background-color: transparent;
+  border: 2px solid var(--text-muted);
+  color: var(--text-muted);
+}
+/* ===========================
+   CURSOR GLOW
+=========================== */
 #cursor-glow {
   position: fixed;
   width: 120px;
@@ -233,31 +455,37 @@ header.intro p {
   opacity: 0;
   transform: translate3d(-9999px, -9999px, 0) scale(1);
 }
-
-/* ===== CONTACT ICONS ===== */
+/* ===========================
+   CONTACT ICONS
+=========================== */
 .contact-icons {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
   margin-top: 1rem;
 }
+
 .contact-link i {
   font-size: 2rem;
   color: var(--accent);
   transition: color 0.3s ease, transform 0.2s ease;
 }
+
 .contact-link i:hover {
   color: var(--accent-light);
   transform: scale(1.2);
 }
+
 .contact-link i:active {
   transform: scale(1.1);
 }
-
-/* ===== ARTIST CARDS WITH FLIP ANIMATION ===== */
+/* ===========================
+   ARTIST CARDS WITH FLIP ANIMATION
+=========================== */
 .artist-card audio {
   display: none;
 }
+
 .artist-card {
   max-width: 240px;
   width: 100%;
@@ -268,20 +496,21 @@ header.intro p {
   border-radius: 10px;
   padding-bottom: 1rem;
   height: auto;
-  min-width: none;
   perspective: 1000px;
 }
+
 .artist-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  perspective: 1000px;
   transform-style: preserve-3d;
   transition: transform 0.6s ease;
 }
+
 .artist-card:hover .artist-inner {
   transform: rotateY(180deg);
 }
+
 .artist-front,
 .artist-back {
   position: absolute;
@@ -296,32 +525,23 @@ header.intro p {
   justify-content: space-between;
   overflow: hidden;
 }
+
 .artist-front {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 1rem;
   z-index: 2;
   position: relative;
+  justify-content: flex-start;
 }
+
 .artist-back {
   transform: rotateY(180deg);
   text-align: center;
   overflow-y: auto;
   padding: 1rem 1rem 2rem;
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  transition: transform 0.6s ease;
-}
-.artist-insights {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto;
 }
 
-/* ===== ALBUM WRAPPER ===== */
+/* ===========================
+   ALBUM WRAPPER
+=========================== */
 .album-wrapper {
   display: flex;
   flex-direction: column;
@@ -332,7 +552,9 @@ header.intro p {
   transition: opacity 0.5s ease-in-out;
 }
 
-/* ===== ALBUM TITLES ===== */
+/* ===========================
+   ALBUM TITLES
+=========================== */
 .album-title,
 #ts-album-title,
 #paramore-album-title,
@@ -347,8 +569,6 @@ header.intro p {
 }
 
 .album-title {
-  font-size: 1rem;
-  text-align: center;
   padding: 0 0.5rem;
   word-break: break-word;
   line-height: 1.2;
@@ -363,7 +583,9 @@ header.intro p {
   text-shadow: none;
 }
 
-/* ===== ALBUM COVER ===== */
+/* ===========================
+   ALBUM COVER
+=========================== */
 .album-cover {
   width: 150px;
   height: 150px;
@@ -372,11 +594,14 @@ header.intro p {
   object-fit: cover;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
+
 .album-cover:hover {
   transform: scale(1.05);
 }
 
-/* ===== ARTIST INFO ===== */
+/* ===========================
+   ARTIST INFO
+=========================== */
 .artist-name {
   font-size: 1.1rem;
   font-weight: bold;
@@ -399,10 +624,24 @@ header.intro p {
   color: var(--text-muted);
   line-height: 1.3;
   text-align: center;
-  white-space: normal;
   word-break: break-word;
 }
 
+/* Divider line before reflection */
+.artist-caption::before {
+  content: "";
+  display: block;
+  width: 80%;
+  height: 2px;
+  margin: 0 auto 0.75rem;
+  background-color: var(--accent-light);
+  opacity: 0.6;
+  box-shadow: 0 0 6px rgba(217,76,76,0.4);
+}
+
+/* ===========================
+   ARTIST GRID
+=========================== */
 .artist-item {
   display: flex;
   flex-direction: column;
@@ -414,7 +653,7 @@ header.intro p {
   max-width: 1100px;
   margin: 0 auto;
   padding: 1rem;
-  overflow: hidden; /* ✅ prevents overflow */
+  overflow: hidden;
 }
 
 .artist-grid {
@@ -424,40 +663,34 @@ header.intro p {
   justify-items: center;
   align-items: start;
   width: 100%;
-  max-width: 100%; /* ✅ ensures it doesn't stretch beyond container */
   box-sizing: border-box;
 }
-
-/* Divider line before reflection */
-.artist-caption::before {
-  content: "";
-  display: block;
-  width: 60%;
-  height: 1px;
-  margin: 0 auto 0.5rem;
-  background-color: var(--border-muted);
-  opacity: 0.3;
-}
-
-/* ===== MOBILE: 320px, 375px, 425px ===== */
-@media (max-width: 425px) {
+/* ===========================
+   SMALL PHONES: ≤375px
+=========================== */
+@media (max-width: 375px) {
   header.intro h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
   section h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   .about-page {
     padding: 1rem;
   }
   .artist-card {
-    max-width: 160px;
-    height: 220px;
-    
+    max-width: 150px;
+    height: auto;
   }
   .album-cover {
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
+  }
+  .album-title,
+  .artist-reflection {
+    font-size: 0.85rem;
+    word-break: break-word;
+    white-space: normal;
   }
   .artist-grid {
     display: flex;
@@ -467,10 +700,44 @@ header.intro p {
   }
 }
 
-/* ===== TABLET: 426px–768px ===== */
-@media (min-width: 426px) and (max-width: 768px) {
+/* ===========================
+   LARGE PHONES: 376px–600px
+=========================== */
+@media (min-width: 376px) and (max-width: 600px) {
   header.intro h1 {
-    font-size: 2.4rem;
+    font-size: 1.8rem;
+  }
+  section h2 {
+    font-size: 1.3rem;
+  }
+  .artist-card {
+    max-width: 180px;
+    height: auto;
+  }
+  .album-cover {
+    width: 120px;
+    height: 120px;
+  }
+  .album-title,
+  .artist-reflection {
+    font-size: 0.9rem;
+    word-break: break-word;
+    white-space: normal;
+  }
+  .artist-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+}
+
+/* ===========================
+   TABLETS: 601px–900px
+=========================== */
+@media (min-width: 601px) and (max-width: 900px) {
+  header.intro h1 {
+    font-size: 2.2rem;
   }
   section h2 {
     font-size: 1.5rem;
@@ -481,7 +748,7 @@ header.intro p {
   }
   .artist-card {
     max-width: 200px;
-    height: 280px;
+    height: auto;
   }
   .album-cover {
     width: 140px;
@@ -495,10 +762,12 @@ header.intro p {
   }
 }
 
-/* ===== LAPTOP: 769px–1024px ===== */
-@media (min-width: 769px) and (max-width: 1024px) {
+/* ===========================
+   LAPTOPS: 901px–1280px
+=========================== */
+@media (min-width: 901px) and (max-width: 1280px) {
   header.intro h1 {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
   }
   section h2 {
     font-size: 1.6rem;
@@ -509,49 +778,22 @@ header.intro p {
   }
   .artist-card {
     max-width: 220px;
-    height: 300px;
+    height: auto;
   }
   .album-cover {
     width: 150px;
     height: 150px;
   }
   .artist-grid {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     justify-items: center;
   }
 }
 
-/* ===== LARGE LAPTOP / DESKTOP: 1025px+ ===== */
-@media (min-width: 1025px) {
-  header.intro h1 {
-    font-size: 3rem;
-  }
-  section h2 {
-    font-size: 1.8rem;
-  }
-  .about-page {
-    max-width: 1100px;
-    padding: 2rem;
-  }
-  .artist-card {
-    max-width: 240px;
-    height: 420px;
-  }
-  .album-cover {
-    width: 140px;
-    height: 140px;
-  }
-  .artist-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-    justify-items: center;
-  }
-}
-
-/* ===== SCROLLBAR STYLING ===== */
+/* ===========================
+   SCROLLBAR STYLING
+=========================== */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -565,49 +807,46 @@ header.intro p {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-light);
 }
-
-/* ===== HOVER EFFECTS ===== */
-.button, .button-ghost {
-  cursor: pointer;
-}
-.button:hover, .button-ghost:hover {
-  transform: translateY(-2px);
-}
-.button:active, .button-ghost:active {
-  transform: translateY(1px);
-}
-
-/* ===== DARK MODE SPECIFIC ===== */
+/* ===========================
+   DARK MODE SPECIFIC
+=========================== */
 .dark-mode section img {
   box-shadow: 0 0 16px rgba(0,0,0,0.5);
 }
+
 .dark-mode .artist-front,
 .dark-mode .artist-back {
   background: var(--bg-panel);
 }
+
 .dark-mode .album-cover {
   box-shadow: 0 0 16px rgba(0,0,0,0.5);
 }
+
 .dark-mode footer {
   border-top: 1px solid var(--border);
 }
-
-/* ===== LIGHT MODE SPECIFIC ===== */
+/* ===========================
+   LIGHT MODE SPECIFIC
+=========================== */
 .light-mode section img {
   box-shadow: 0 0 12px rgba(0,0,0,0.2);
 }
+
 .light-mode .artist-front,
 .light-mode .artist-back {
   background: var(--bg-soft);
 }
+
 .light-mode .album-cover {
   box-shadow: 0 0 12px rgba(0,0,0,0.2);
 }
+
 .light-mode footer {
   border-top: 1px solid var(--border);
 }
 
-/* ===== FORMAL SECTIONS: Pure black text in light mode ===== */
+/* Formal sections: pure black text in light mode */
 .light-mode .education-panel,
 .light-mode .achievements-panel,
 .light-mode .certifications-panel,
@@ -616,6 +855,7 @@ header.intro p {
 .light-mode .projects-panel {
   color: #000000;
 }
+
 .light-mode .education-panel h3,
 .light-mode .achievements-panel h3,
 .light-mode .certifications-panel h3,
@@ -632,32 +872,9 @@ header.intro p {
 .light-mode .projects-panel li {
   color: #000000;
 }
-
-/* LIGHT MODE OVERRIDE */
-.light-mode .skills-panel h3 {
-   color: #ca8a04;
-}
-
-/* ===== LIGHT MODE BUTTONS + LINKS ===== */
-.light-mode .button-ghost {
-  color: var(--accent);
-  border: 1px solid var(--border);
-}
-.light-mode .button-ghost:hover {
-  background: rgba(156, 39, 176, 0.1); /* amethyst hover */
-  border-color: var(--accent);
-}
-.light-mode .theme-link {
-  color: var(--secondary);
-}
-.light-mode .theme-link:hover {
-  color: var(--accent);
-}
-.light-mode .theme-muted {
-  color: #000000;
-}
-
-/* ===== NAVBAR BASE ===== */
+/* ===========================
+   NAVBAR BASE
+=========================== */
 .navbar {
   display: flex;
   flex-wrap: wrap;
@@ -671,7 +888,7 @@ header.intro p {
   z-index: 1000;
 }
 
-/* ===== NAV HEADER ===== */
+/* Nav header */
 .nav-header {
   display: flex;
   justify-content: space-between;
@@ -679,7 +896,7 @@ header.intro p {
   width: 100%;
 }
 
-/* ===== MENU TOGGLE BUTTON ===== */
+/* Menu toggle button */
 .menu-toggle {
   background: transparent;
   border: none;
@@ -692,7 +909,7 @@ header.intro p {
   color: var(--accent-light);
 }
 
-/* ===== NAV MENU ===== */
+/* Nav menu */
 .nav-menu {
   display: flex;
   flex-wrap: wrap;
@@ -711,7 +928,7 @@ header.intro p {
   color: var(--accent-light);
 }
 
-/* ===== THEME TOGGLE BUTTON ===== */
+/* Theme toggle button */
 .theme-toggle {
   background: transparent;
   border: none;
@@ -724,7 +941,7 @@ header.intro p {
   color: var(--accent-light);
 }
 
-/* ===== RESPONSIVE BREAKPOINTS FOR NAV ===== */
+/* Responsive breakpoints for nav */
 @media (max-width: 768px) {
   .nav-menu {
     display: none;
@@ -751,8 +968,9 @@ header.intro p {
     gap: 1rem;
   }
 }
-
-/* ===== INTRO SECTION ===== */
+/* ===========================
+   INTRO SECTION
+=========================== */
 .intro-section {
   padding: 4rem 2rem;
   background-color: var(--bg-dark);
@@ -766,30 +984,130 @@ header.intro p {
   font-size: 1.1rem;
   color: var(--text-muted);
 }
-.intro-buttons .button {
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  font-weight: 600;
-  transition: background 0.3s ease;
+/* ===========================
+   PANELS
+=========================== */
+.panel {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 3rem auto;
+  max-width: 900px;
+  box-shadow: 0 0 20px var(--shadow);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ===== INTRO BUTTONS ===== */
-.intro-buttons .button {
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  font-weight: 600;
-  transition: background 0.3s ease;
+.panel:hover {
+  background: var(--hover);
+  box-shadow: 0 0 28px rgba(168, 50, 50, 0.35);
+}
+/* ===========================
+   FOOTER
+=========================== */
+.dark-mode footer {
+  border-top: 1px solid var(--border);
 }
 
-/* ===== BUTTON PRIMARY ===== */
-.button-primary {
-  background-color: var(--accent);
-  color: var(--bg);
+.light-mode footer {
+  border-top: 1px solid var(--border);
+}
+/* ===========================
+   TRANSITIONS
+=========================== */
+html, body {
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
-/* ===== BUTTON GHOST (Intro Override) ===== */
-.button-ghost {
-  background-color: transparent;
-  border: 2px solid var(--text-muted);
-  color: var(--text-muted);
+.panel,
+.skill-card,
+.edu-block,
+.artist-card,
+.hero-panel,
+.navbar,
+footer {
+  transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+
+section h2,
+section p,
+.hero-title span,
+.hero-subtitle,
+.hero-description,
+.album-title,
+.artist-reflection,
+.contact-link i {
+  transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+.theme-toggle i {
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+body {
+  transition: background-image 0.4s ease;
+}
+
+/* Theme fade overlay */
+#theme-fade {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transition: opacity 0.4s ease;
+}
+body.theme-fading #theme-fade {
+  opacity: 1;
+}
+/* ===========================
+   SKILL CARDS + HOVER MEDIA
+=========================== */
+.skill-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-media {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+}
+
+.skill-card:hover .hover-media {
+  opacity: 1;
+}
+/* ===========================
+   HERO GREETING COLOR OVERRIDES
+=========================== */
+#hero-greeting {
+  transition: color 0.3s ease;
+}
+
+body.dark #hero-greeting {
+  color: #ef4444; /* red in dark mode */
+}
+
+body.light #hero-greeting {
+  color: #6b21a8; /* violet/purple in light mode */
+}
+/* ===========================
+   HERO GREETING COLOR OVERRIDES
+=========================== */
+#hero-greeting {
+  transition: color 0.3s ease;
+}
+
+body.dark #hero-greeting {
+  color: #ef4444; /* red in dark mode */
+}
+
+body.light #hero-greeting {
+  color: #6b21a8; /* violet/purple in light mode */
 }

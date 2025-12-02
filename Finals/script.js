@@ -1,26 +1,51 @@
 (() => {
   /* ===== ELEMENTS ===== */
   const sections = document.querySelectorAll('.fade-section');
-  const cursor = document.getElementById('cursor-glow');
   const navLinks = document.querySelectorAll('.nav-link');
-  const themeBtn = document.getElementById('themeBtn');
-  const navbar = document.querySelector('nav.navbar');
-
-  const tsFrontImg = document.getElementById('ts-front-img');
-  const paramoreFrontImg = document.getElementById('paramore-front-img');
-  const mcrFrontImg = document.getElementById('mcr-front-img');
 
   /* ===== REVEAL ON SCROLL ===== */
   if ("IntersectionObserver" in window) {
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible'); // re-trigger when leaving/entering
+        }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.15, rootMargin: "0px 0px -10% 0px" });
+
     sections.forEach(s => revealObserver.observe(s));
   } else {
     sections.forEach(s => s.classList.add('visible'));
   }
+
+(() => {
+  const applyStagger = (containerSelector, itemSelector, baseDelay = 0.2, step = 0.2) => {
+    const container = document.querySelector(containerSelector);
+    if (!container) return;
+
+    const items = Array.from(container.querySelectorAll(itemSelector));
+    items.forEach((el, i) => {
+      el.style.animationDelay = `${baseDelay + i * step}s`;
+    });
+  };
+
+  // Artists: order Taylor, Paramore, MCR inside your artist grid/container
+  applyStagger('.artist-container, .artist-grid', '.fade-right');
+
+  // Achievements: stagger skill cards
+  applyStagger('.skills-wrapper, .skills-content', '.skill-card.fade-right');
+
+  // Keep delay consistent even if IntersectionObserver toggles .visible multiple times
+  const allFadeRight = document.querySelectorAll('.fade-right');
+  allFadeRight.forEach(el => {
+    el.addEventListener('animationend', () => {
+      // Optional: reset delay if you want re‑entry animations to restart fresh
+      // el.style.animationDelay = '';
+    });
+  });
+})();
 
   /* ===== SMOOTH NAVIGATION ===== */
   navLinks.forEach(link => {
@@ -36,33 +61,24 @@
     });
   });
 })();
-
 (() => {
   const cursor = document.getElementById('cursor-glow');
 
   /* ===== CURSOR GLOW FOLLOW ===== */
   if (cursor) {
-    // Default smaller size when idle
     let scale = 0.8;
-
-    // Detect mobile/tablet and shrink further
     const isMobileOrTablet = window.matchMedia("(max-width: 1024px)").matches;
-    if (isMobileOrTablet) {
-      scale = 0.5;
-    }
+    if (isMobileOrTablet) scale = 0.5;
 
-    // Follow mouse
     document.addEventListener('mousemove', e => {
       cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) scale(${scale})`;
       cursor.style.opacity = 1;
     });
 
-    // Hide when leaving viewport
     document.addEventListener('mouseout', e => {
       if (!e.relatedTarget) cursor.style.opacity = 0;
     });
 
-    // Enlarge slightly on interactive elements
     document.querySelectorAll('a, button, .nav-link').forEach(el => {
       el.addEventListener('mouseenter', () => {
         cursor.style.transform = `translate3d(${cursor.offsetLeft}px, ${cursor.offsetTop}px, 0) scale(${scale + 0.5})`;
@@ -87,7 +103,6 @@
     }
   });
 })();
-
 (() => {
   const themeBtn = document.getElementById('themeBtn');
   const navbar = document.querySelector('nav.navbar');
@@ -101,7 +116,6 @@
     const isLight = mode === 'light';
     document.documentElement.classList.toggle('light-mode', isLight);
     document.body.classList.toggle('light-mode', isLight);
-
 
     // Navbar styling
     if (navbar) {
@@ -129,13 +143,20 @@
   const savedTheme = localStorage.getItem('site-theme') || 'dark';
   applyTheme(savedTheme);
 
-  // Toggle theme on button click
+  /* ===== TOGGLE THEME WITH FADE ===== */
   themeBtn?.addEventListener('click', () => {
     const isCurrentlyLight = document.documentElement.classList.contains('light-mode');
-    applyTheme(isCurrentlyLight ? 'dark' : 'light');
+    const newMode = isCurrentlyLight ? 'dark' : 'light';
+
+    // Add fade overlay class
+    document.body.classList.add('theme-fading');
+
+    setTimeout(() => {
+      applyTheme(newMode);
+      document.body.classList.remove('theme-fading');
+    }, 400); // match CSS transition duration
   });
 })();
-
 (() => {
   const tsCard = document.getElementById('ts-card');
   const tsAlbums = document.getElementById('ts-albums');
@@ -164,7 +185,6 @@
       { src: "images/TS-Folklore.jpg", title: "Folklore" },
       { src: "images/TS-TTPD.jpg", title: "The Tortured Poets Department" }
     ];
-
     const albumDataLight = [
       { src: "images/TS-1989-(Taylor's-Version).jpg", title: "1989 (Taylor's Version)" },
       { src: "images/TS-Midnights.jpg", title: "Midnights" },
@@ -173,14 +193,12 @@
 
     const getAlbumSet = () =>
       document.documentElement.classList.contains('light-mode') ? albumDataLight : albumDataDark;
-
     const getAudioSrc = () =>
       document.documentElement.classList.contains('light-mode')
         ? "audios/Taylor-Swift-Blank-Space(Taylor's-Version).mp3"
         : "audios/Taylor-Swift-Look-What-You-Made-Me-Do.mp3";
 
-    let index = 0;
-    let interval;
+    let index = 0, interval;
 
     tsCard.addEventListener('mouseenter', () => {
       const albumSet = getAlbumSet();
@@ -188,7 +206,6 @@
       tsAlbums.src = albumSet[index].src;
       tsAlbumTitle.textContent = albumSet[index].title;
 
-      // Auto-play only if audio is fresh
       if (tsAudio.currentTime === 0 || tsAudio.ended) {
         tsAudio.src = getAudioSrc();
         tsAudio.play();
@@ -197,8 +214,7 @@
 
       interval = setInterval(() => {
         tsWrapper.classList.remove('visible');
-        void tsWrapper.offsetWidth; // force reflow
-
+        void tsWrapper.offsetWidth;
         setTimeout(() => {
           index = (index + 1) % albumSet.length;
           tsAlbums.src = albumSet[index].src;
@@ -216,7 +232,6 @@
       tsAlbumTitle.textContent = albumSet[index].title;
       tsWrapper.classList.add('visible');
 
-      // Reset audio only if it was playing
       if (!tsAudio.paused) {
         tsAudio.pause();
         tsAudio.currentTime = 0;
@@ -225,7 +240,6 @@
     });
   }
 })();
-
 (() => {
   const pmCard = document.getElementById('paramore-card');
   const pmAlbums = document.getElementById('paramore-albums');
@@ -254,7 +268,6 @@
       { src: "images/PM-Brand-New-Eyes.jpg", title: "Brand New Eyes" },
       { src: "images/PM-All-We-Know-Is-Falling.jpg", title: "All We Know Is Falling" }
     ];
-
     const albumDataLight = [
       { src: "images/PM-Paramore.jpg", title: "Paramore" },
       { src: "images/PM-After-Laughter.jpg", title: "After Laughter" },
@@ -263,14 +276,12 @@
 
     const getAlbumSet = () =>
       document.documentElement.classList.contains('light-mode') ? albumDataLight : albumDataDark;
-
     const getAudioSrc = () =>
       document.documentElement.classList.contains('light-mode')
         ? "audios/Paramore-Still-Into-You.mp3"
         : "audios/Paramore-Misery-Business.mp3";
 
-    let index = 0;
-    let interval;
+    let index = 0, interval;
 
     pmCard.addEventListener('mouseenter', () => {
       const albumSet = getAlbumSet();
@@ -278,7 +289,6 @@
       pmAlbums.src = albumSet[index].src;
       pmAlbumTitle.textContent = albumSet[index].title;
 
-      // Auto-play only if audio is fresh
       if (pmAudio.currentTime === 0 || pmAudio.ended) {
         pmAudio.src = getAudioSrc();
         pmAudio.play();
@@ -287,8 +297,7 @@
 
       interval = setInterval(() => {
         pmWrapper.classList.remove('visible');
-        void pmWrapper.offsetWidth; // force reflow
-
+        void pmWrapper.offsetWidth;
         setTimeout(() => {
           index = (index + 1) % albumSet.length;
           pmAlbums.src = albumSet[index].src;
@@ -306,7 +315,6 @@
       pmAlbumTitle.textContent = albumSet[index].title;
       pmWrapper.classList.add('visible');
 
-      // Reset audio only if it was playing
       if (!pmAudio.paused) {
         pmAudio.pause();
         pmAudio.currentTime = 0;
@@ -315,7 +323,6 @@
     });
   }
 })();
-
 (() => {
   const mcrCard = document.getElementById('mcr-card');
   const mcrAlbums = document.getElementById('mcr-albums');
@@ -343,7 +350,6 @@
       { src: "images/MCR-The-Black-Parade.jpg", title: "The Black Parade" },
       { src: "images/MCR-Three-Cheers-For-Sweet-Revenge.jpg", title: "Three Cheers for Sweet Revenge" },
       { src: "images/MCR-I-Brought-You-My-Bullets.jpg", title: "I Brought You My Bullets" }
-      
     ];
 
     const albumDataLight = [
@@ -360,8 +366,7 @@
         ? "audios/MCR-Na-Na-Na.mp3"
         : "audios/MCR-Welcome-To-The-Black-Parade.mp3";
 
-    let index = 0;
-    let interval;
+    let index = 0, interval;
 
     mcrCard.addEventListener('mouseenter', () => {
       const albumSet = getAlbumSet();
@@ -369,7 +374,6 @@
       mcrAlbums.src = albumSet[index].src;
       mcrAlbumTitle.textContent = albumSet[index].title;
 
-      // Auto-play only if audio is fresh
       if (mcrAudio.currentTime === 0 || mcrAudio.ended) {
         mcrAudio.src = getAudioSrc();
         mcrAudio.play();
@@ -378,8 +382,7 @@
 
       interval = setInterval(() => {
         mcrWrapper.classList.remove('visible');
-        void mcrWrapper.offsetWidth; // force reflow
-
+        void mcrWrapper.offsetWidth;
         setTimeout(() => {
           index = (index + 1) % albumSet.length;
           mcrAlbums.src = albumSet[index].src;
@@ -397,7 +400,6 @@
       mcrAlbumTitle.textContent = albumSet[index].title;
       mcrWrapper.classList.add('visible');
 
-      // Reset audio only if it was playing
       if (!mcrAudio.paused) {
         mcrAudio.pause();
         mcrAudio.currentTime = 0;
@@ -406,7 +408,6 @@
     });
   }
 })();
-
 (() => {
   /* ===== ACHIEVEMENTS VIDEO HOVER ===== */
   document.querySelectorAll('.skill-card').forEach(card => {
@@ -420,43 +421,5 @@
         video.currentTime = 0; // reset to start
       });
     }
-  });
-})();
-
-(() => {
-  /* ===== SMOOTH SCROLLING (extra utility) ===== */
-  const navLinks = document.querySelectorAll('.nav-link');
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      if (!href?.startsWith('#')) return;
-      e.preventDefault();
-      const target = document.querySelector(href);
-      target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-      // Close mobile menu if open
-      document.querySelector('.nav-menu')?.classList.remove('open');
-    });
-  });
-
-  /* ===== MOBILE MENU TOGGLE ===== */
-(() => {
-  const menuToggle = document.getElementById("menuToggle"); // ✅ use ID
-  const navMenu = document.querySelector(".nav-menu");
-
-  if (menuToggle && navMenu) {
-    menuToggle.addEventListener("click", () => {
-      navMenu.classList.toggle("open");
-    });
-  }
-})();
-
-  /* ===== INITIALIZATION ===== */
-  window.addEventListener('DOMContentLoaded', () => {
-    console.log("Portfolio initialized ✨ Gothic + Jewel theme active");
-    // Trigger fade-in reveal once on load
-    document.querySelectorAll('.fade-section').forEach(section => {
-      section.classList.add('visible');
-    });
   });
 })();
