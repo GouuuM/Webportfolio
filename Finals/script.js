@@ -20,33 +20,6 @@
     sections.forEach(s => s.classList.add('visible'));
   }
 
-(() => {
-  const applyStagger = (containerSelector, itemSelector, baseDelay = 0.2, step = 0.2) => {
-    const container = document.querySelector(containerSelector);
-    if (!container) return;
-
-    const items = Array.from(container.querySelectorAll(itemSelector));
-    items.forEach((el, i) => {
-      el.style.animationDelay = `${baseDelay + i * step}s`;
-    });
-  };
-
-  // Artists: order Taylor, Paramore, MCR inside your artist grid/container
-  applyStagger('.artist-container, .artist-grid', '.fade-right');
-
-  // Achievements: stagger skill cards
-  applyStagger('.skills-wrapper, .skills-content', '.skill-card.fade-right');
-
-  // Keep delay consistent even if IntersectionObserver toggles .visible multiple times
-  const allFadeRight = document.querySelectorAll('.fade-right');
-  allFadeRight.forEach(el => {
-    el.addEventListener('animationend', () => {
-      // Optional: reset delay if you want re‑entry animations to restart fresh
-      // el.style.animationDelay = '';
-    });
-  });
-})();
-
   /* ===== SMOOTH NAVIGATION ===== */
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
@@ -60,7 +33,18 @@
       document.querySelector('.nav-menu')?.classList.remove('open');
     });
   });
+
+  /* ===== MOBILE NAV TOGGLE ===== */
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.querySelector('.nav-menu');
+
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+    });
+  }
 })();
+
 (() => {
   const cursor = document.getElementById('cursor-glow');
 
