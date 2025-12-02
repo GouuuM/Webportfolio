@@ -292,7 +292,7 @@ section p {
 .skill-block h3 {
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
-  color: var(--accent);
+  color: var(--secondary);
 }
 
 .skill-block p {
@@ -323,6 +323,24 @@ section p {
 .light-mode .skill-block p,
 .light-mode .skill-block ul {
   color: #000000;
+}
+/* ===========================
+   Projects Section Titles
+=========================== */
+.projects-panel .skill-card h5 a,
+.projects-panel .skill-card h5 {
+  color: var(--secondary); /* ✅ theme-aware accent */
+  text-shadow: none;
+  transition: color 0.3s ease;
+}
+
+/* ===========================
+   Achievements Section Titles
+=========================== */
+.achievements-panel .skill-card h5 {
+  color: var(--secondary); /* ✅ theme-aware accent */
+  text-shadow: none;
+  transition: color 0.3s ease;
 }
 
 /* ===========================
