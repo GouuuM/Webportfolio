@@ -157,7 +157,12 @@
     }, 400); // match CSS transition duration
   });
 })();
-(() => {
+
+  // Detect if user is on mobile/tablet or desktop
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  const triggerEvent = isTouchDevice ? 'click' : 'mouseenter';
+
+(() => {  
   const tsCard = document.getElementById('ts-card');
   const tsAlbums = document.getElementById('ts-albums');
   const tsAlbumTitle = document.getElementById('ts-album-title');
@@ -165,7 +170,7 @@
   const tsPlayBtn = document.getElementById('ts-play-btn');
   const tsWrapper = tsCard?.querySelector('.album-wrapper');
 
-  /* ===== MANUAL PLAY/PAUSE TOGGLE ===== */
+  // Manual Play/Pause
   if (tsPlayBtn && tsAudio) {
     tsPlayBtn.addEventListener('click', () => {
       if (tsAudio.paused) {
@@ -178,7 +183,7 @@
     });
   }
 
-  /* ===== ALBUM SLIDESHOW ===== */
+  // Album Slideshow
   if (tsAlbums && tsCard && tsAlbumTitle && tsAudio && tsWrapper) {
     const albumDataDark = [
       { src: "images/TS-Reputation.jpg", title: "Reputation" },
@@ -200,7 +205,7 @@
 
     let index = 0, interval;
 
-    tsCard.addEventListener('mouseenter', () => {
+    tsCard.addEventListener(triggerEvent, () => {
       const albumSet = getAlbumSet();
       index = 0;
       tsAlbums.src = albumSet[index].src;
@@ -224,20 +229,22 @@
       }, 2000);
     });
 
-    tsCard.addEventListener('mouseleave', () => {
-      clearInterval(interval);
-      index = 0;
-      const albumSet = getAlbumSet();
-      tsAlbums.src = albumSet[index].src;
-      tsAlbumTitle.textContent = albumSet[index].title;
-      tsWrapper.classList.add('visible');
+    if (!isTouchDevice) {
+      tsCard.addEventListener('mouseleave', () => {
+        clearInterval(interval);
+        index = 0;
+        const albumSet = getAlbumSet();
+        tsAlbums.src = albumSet[index].src;
+        tsAlbumTitle.textContent = albumSet[index].title;
+        tsWrapper.classList.add('visible');
 
-      if (!tsAudio.paused) {
-        tsAudio.pause();
-        tsAudio.currentTime = 0;
-        tsPlayBtn.textContent = "▶ Play";
-      }
-    });
+        if (!tsAudio.paused) {
+          tsAudio.pause();
+          tsAudio.currentTime = 0;
+          tsPlayBtn.textContent = "▶ Play";
+        }
+      });
+    }
   }
 })();
 (() => {
@@ -248,7 +255,7 @@
   const pmPlayBtn = document.getElementById('paramore-play-btn');
   const pmWrapper = pmCard?.querySelector('.album-wrapper');
 
-  /* ===== MANUAL PLAY/PAUSE TOGGLE ===== */
+  // Manual Play/Pause
   if (pmPlayBtn && pmAudio) {
     pmPlayBtn.addEventListener('click', () => {
       if (pmAudio.paused) {
@@ -261,7 +268,7 @@
     });
   }
 
-  /* ===== ALBUM SLIDESHOW ===== */
+  // Album Slideshow
   if (pmAlbums && pmCard && pmAlbumTitle && pmAudio && pmWrapper) {
     const albumDataDark = [
       { src: "images/PM-Riot!.jpg", title: "Riot!" },
@@ -283,7 +290,7 @@
 
     let index = 0, interval;
 
-    pmCard.addEventListener('mouseenter', () => {
+    pmCard.addEventListener(triggerEvent, () => {
       const albumSet = getAlbumSet();
       index = 0;
       pmAlbums.src = albumSet[index].src;
@@ -307,20 +314,22 @@
       }, 2000);
     });
 
-    pmCard.addEventListener('mouseleave', () => {
-      clearInterval(interval);
-      index = 0;
-      const albumSet = getAlbumSet();
-      pmAlbums.src = albumSet[index].src;
-      pmAlbumTitle.textContent = albumSet[index].title;
-      pmWrapper.classList.add('visible');
+    if (!isTouchDevice) {
+      pmCard.addEventListener('mouseleave', () => {
+        clearInterval(interval);
+        index = 0;
+        const albumSet = getAlbumSet();
+        pmAlbums.src = albumSet[index].src;
+        pmAlbumTitle.textContent = albumSet[index].title;
+        pmWrapper.classList.add('visible');
 
-      if (!pmAudio.paused) {
-        pmAudio.pause();
-        pmAudio.currentTime = 0;
-        pmPlayBtn.textContent = "▶ Play";
-      }
-    });
+        if (!pmAudio.paused) {
+          pmAudio.pause();
+          pmAudio.currentTime = 0;
+          pmPlayBtn.textContent = "▶ Play";
+        }
+      });
+    }
   }
 })();
 (() => {
