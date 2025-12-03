@@ -1,16 +1,14 @@
 (() => {
-  /* ===== ELEMENTS ===== */
   const sections = document.querySelectorAll('.fade-section');
   const navLinks = document.querySelectorAll('.nav-link');
 
-  /* ===== REVEAL ON SCROLL ===== */
   if ("IntersectionObserver" in window) {
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         } else {
-          entry.target.classList.remove('visible'); // re-trigger when leaving/entering
+          entry.target.classList.remove('visible'); 
         }
       });
     }, { threshold: 0.15, rootMargin: "0px 0px -10% 0px" });
@@ -20,7 +18,6 @@
     sections.forEach(s => s.classList.add('visible'));
   }
 
-  /* ===== SMOOTH NAVIGATION ===== */
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
@@ -29,12 +26,10 @@
       const target = document.querySelector(href);
       target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-      // Close mobile menu if open
       document.querySelector('.nav-menu')?.classList.remove('open');
     });
   });
 
-  /* ===== MOBILE NAV TOGGLE ===== */
   const menuToggle = document.getElementById('menuToggle');
   const navMenu = document.querySelector('.nav-menu');
 
@@ -48,7 +43,6 @@
 (() => {
   const cursor = document.getElementById('cursor-glow');
 
-  /* ===== CURSOR GLOW FOLLOW ===== */
   if (cursor) {
     let scale = 0.8;
     const isMobileOrTablet = window.matchMedia("(max-width: 1024px)").matches;
@@ -73,7 +67,6 @@
     });
   }
 
-  /* ===== PARALLAX ACCENT ===== */
   let lastScroll = 0, ticking = false;
   const updateParallax = () => {
     document.body.style.backgroundPosition = `center ${lastScroll * 0.05}px`;
@@ -95,66 +88,57 @@
   const paramoreFrontImg = document.getElementById('paramore-front-img');
   const mcrFrontImg = document.getElementById('mcr-front-img');
 
-  /* ===== APPLY THEME ===== */
   const applyTheme = (mode) => {
     const isLight = mode === 'light';
     document.documentElement.classList.toggle('light-mode', isLight);
     document.body.classList.toggle('light-mode', isLight);
 
-    // Navbar styling
     if (navbar) {
       navbar.classList.toggle('bg-dark', !isLight);
       navbar.classList.toggle('bg-gray-100', isLight);
     }
 
-    // Theme button icon
     if (themeBtn) {
       themeBtn.innerHTML = isLight
         ? '<i class="bi bi-sun"></i>'
         : '<i class="bi bi-moon-stars"></i>';
     }
 
-    // Artist front images swap
+  
     if (tsFrontImg) tsFrontImg.src = isLight ? "images/Taylor-Swift-lightmode.jpg" : "images/Taylor-Swift-darkmode.jpg";
     if (paramoreFrontImg) paramoreFrontImg.src = isLight ? "images/Paramore-lightmode.jpg" : "images/Paramore-darkmode.jpg";
     if (mcrFrontImg) mcrFrontImg.src = isLight ? "images/MCR-lightmode.jpg" : "images/MCR-darkmode.jpg";
 
-    // Save preference
     localStorage.setItem('site-theme', mode);
   };
 
-  // Load saved theme
   const savedTheme = localStorage.getItem('site-theme') || 'dark';
   applyTheme(savedTheme);
 
-  /* ===== TOGGLE THEME WITH FADE ===== */
   themeBtn?.addEventListener('click', () => {
     const isCurrentlyLight = document.documentElement.classList.contains('light-mode');
     const newMode = isCurrentlyLight ? 'dark' : 'light';
 
-    // Add fade overlay class
     document.body.classList.add('theme-fading');
 
     setTimeout(() => {
       applyTheme(newMode);
       document.body.classList.remove('theme-fading');
-    }, 400); // match CSS transition duration
+    }, 400);
   });
 })();
 
-  // Detect if user is on mobile/tablet or desktop
   const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
   const triggerEvent = isTouchDevice ? 'click' : 'mouseenter';
 
-(() => {  
-  const tsCard = document.getElementById('ts-card');
-  const tsAlbums = document.getElementById('ts-albums');
-  const tsAlbumTitle = document.getElementById('ts-album-title');
-  const tsAudio = document.getElementById('ts-audio');
-  const tsPlayBtn = document.getElementById('ts-play-btn');
-  const tsWrapper = tsCard?.querySelector('.album-wrapper');
+(() => { 
+  const tsCard = document.getElementById('ts-card');              
+  const tsAlbums = document.getElementById('ts-albums');          
+  const tsAlbumTitle = document.getElementById('ts-album-title'); 
+  const tsAudio = document.getElementById('ts-audio');            
+  const tsPlayBtn = document.getElementById('ts-play-btn');       
+  const tsWrapper = tsCard?.querySelector('.album-wrapper');     
 
-  // Manual Play/Pause
   if (tsPlayBtn && tsAudio) {
     tsPlayBtn.addEventListener('click', () => {
       if (tsAudio.paused) {
@@ -167,7 +151,6 @@
     });
   }
 
-  // Album Slideshow
   if (tsAlbums && tsCard && tsAlbumTitle && tsAudio && tsWrapper) {
     const albumDataDark = [
       { src: "images/TS-Reputation.jpg", title: "Reputation" },
@@ -203,12 +186,12 @@
 
       interval = setInterval(() => {
         tsWrapper.classList.remove('visible');
-        void tsWrapper.offsetWidth;
+        void tsWrapper.offsetWidth;   
         setTimeout(() => {
           index = (index + 1) % albumSet.length;
           tsAlbums.src = albumSet[index].src;
           tsAlbumTitle.textContent = albumSet[index].title;
-          tsWrapper.classList.add('visible');
+          tsWrapper.classList.add('visible'); 
         }, 300);
       }, 2000);
     });
@@ -232,14 +215,13 @@
   }
 })();
 (() => {
-  const pmCard = document.getElementById('paramore-card');
-  const pmAlbums = document.getElementById('paramore-albums');
-  const pmAlbumTitle = document.getElementById('paramore-album-title');
-  const pmAudio = document.getElementById('paramore-audio');
-  const pmPlayBtn = document.getElementById('paramore-play-btn');
-  const pmWrapper = pmCard?.querySelector('.album-wrapper');
+  const pmCard = document.getElementById('paramore-card');           
+  const pmAlbums = document.getElementById('paramore-albums');        
+  const pmAlbumTitle = document.getElementById('paramore-album-title'); 
+  const pmAudio = document.getElementById('paramore-audio');            
+  const pmPlayBtn = document.getElementById('paramore-play-btn');      
+  const pmWrapper = pmCard?.querySelector('.album-wrapper');        
 
-  // Manual Play/Pause
   if (pmPlayBtn && pmAudio) {
     pmPlayBtn.addEventListener('click', () => {
       if (pmAudio.paused) {
@@ -252,7 +234,6 @@
     });
   }
 
-  // Album Slideshow
   if (pmAlbums && pmCard && pmAlbumTitle && pmAudio && pmWrapper) {
     const albumDataDark = [
       { src: "images/PM-Riot!.jpg", title: "Riot!" },
@@ -287,13 +268,13 @@
       }
 
       interval = setInterval(() => {
-        pmWrapper.classList.remove('visible');
-        void pmWrapper.offsetWidth;
+        pmWrapper.classList.remove('visible'); 
+        void pmWrapper.offsetWidth;        
         setTimeout(() => {
           index = (index + 1) % albumSet.length;
           pmAlbums.src = albumSet[index].src;
           pmAlbumTitle.textContent = albumSet[index].title;
-          pmWrapper.classList.add('visible');
+          pmWrapper.classList.add('visible'); 
         }, 300);
       }, 2000);
     });
@@ -317,14 +298,14 @@
   }
 })();
 (() => {
-  const mcrCard = document.getElementById('mcr-card');
-  const mcrAlbums = document.getElementById('mcr-albums');
-  const mcrAlbumTitle = document.getElementById('mcr-album-title');
-  const mcrAudio = document.getElementById('mcr-audio');
-  const mcrPlayBtn = document.getElementById('mcr-play-btn');
-  const mcrWrapper = mcrCard?.querySelector('.album-wrapper');
+  const mcrCard = document.getElementById('mcr-card');             
+  const mcrAlbums = document.getElementById('mcr-albums');          
+  const mcrAlbumTitle = document.getElementById('mcr-album-title');  
+  const mcrAudio = document.getElementById('mcr-audio');            
+  const mcrPlayBtn = document.getElementById('mcr-play-btn');    
+  const mcrWrapper = mcrCard?.querySelector('.album-wrapper');  
 
-  /* ===== MANUAL PLAY/PAUSE TOGGLE ===== */
+
   if (mcrPlayBtn && mcrAudio) {
     mcrPlayBtn.addEventListener('click', () => {
       if (mcrAudio.paused) {
@@ -337,7 +318,6 @@
     });
   }
 
-  /* ===== ALBUM SLIDESHOW ===== */
   if (mcrAlbums && mcrCard && mcrAlbumTitle && mcrAudio && mcrWrapper) {
     const albumDataDark = [
       { src: "images/MCR-The-Black-Parade.jpg", title: "The Black Parade" },
@@ -374,8 +354,8 @@
       }
 
       interval = setInterval(() => {
-        mcrWrapper.classList.remove('visible');
-        void mcrWrapper.offsetWidth;
+        mcrWrapper.classList.remove('visible'); 
+        void mcrWrapper.offsetWidth; 
         setTimeout(() => {
           index = (index + 1) % albumSet.length;
           mcrAlbums.src = albumSet[index].src;
@@ -402,7 +382,6 @@
   }
 })();
 (() => {
-  /* ===== ACHIEVEMENTS VIDEO HOVER ===== */
   document.querySelectorAll('.skill-card').forEach(card => {
     const video = card.querySelector('video');
     if (video) {
@@ -411,7 +390,7 @@
       });
       card.addEventListener('mouseleave', () => {
         video.pause();
-        video.currentTime = 0; // reset to start
+        video.currentTime = 0;
       });
     }
   });

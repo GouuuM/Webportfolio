@@ -1,24 +1,20 @@
-/* ===========================
-   THEME VARIABLES
-=========================== */
 :root {
-  --bg: #0a0a0c;
-  --bg-soft: #111115;
-  --bg-panel: #16161c;
+  --bg: #0a0a0c;          
+  --bg-soft: #111115;    
+  --bg-panel: #16161c; 
 
-  --text: #e6e3e1;
-  --text-muted: #a8a6a2;
+  --text: #e6e3e1;       
+  --text-muted: #a8a6a2; 
 
-  --accent: #a83232;
+  --accent: #a83232;     
   --accent-light: #d94c4c;
-  --secondary: #f3b109;
+  --secondary: #f3b109; 
 
   --shadow: rgba(0, 0, 0, 0.7);
-  --border: #2a2a33;
-  --hover: #1d1d23;
+  --border: #2a2a33;       
+  --hover: #1d1d23;      
 }
 
-/* Light mode — jewel palette */
 .light-mode {
   --bg: #fdfaf6;
   --bg-soft: #f4efe9;
@@ -27,20 +23,16 @@
   --text: #2c2c34;
   --text-muted: #6b6a68;
 
-  --accent: #6a1b9a;
-  --accent-light: #9c27b0;
-  --secondary: #f3b109;
+  --accent: #6a1b9a;      
+  --accent-light: #9c27b0; 
+  --secondary: #f3b109;  
 
   --shadow: rgba(0, 0, 0, 0.35);
   --border: #dcd6cf;
   --hover: #f1ece4;
 }
 
-/* ===========================
-   RESET & BASE
-=========================== */
 * { box-sizing: border-box; }
-
 html, body {
   margin: 0;
   padding: 0;
@@ -50,345 +42,281 @@ html, body {
   line-height: 1.6;
   transition: background 0.4s ease, color 0.4s ease;
 }
-
 html { scroll-behavior: smooth; }
-
 .about-page {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
-/* ===========================
-   TYPOGRAPHY
-=========================== */
+
 h1, h2, h3, h4, h5 {
   margin: 0 0 0.5rem;
 }
-
 .font-cinzel,
 header.intro h1,
 section h2 {
   font-family: "Cinzel", serif;
 }
 
-/* ===========================
-   SECTION TITLES
-=========================== */
 section h2 {
   font-size: 1.8rem;
   margin-bottom: 0.8rem;
-  border-bottom: 2px solid var(--accent-light); /* enhanced visibility */
+  border-bottom: 2px solid var(--accent-light);
   padding-bottom: 0.4rem;
   color: var(--accent-light);
-  text-shadow: 0 0 8px rgba(217,76,76,0.3);
+  text-shadow: 0 0 8px rgba(217,76,76,0.3); 
 }
 #about {
-  overflow-x: hidden;
+  overflow-x: hidden; 
 }
 #about h2 {
-  border-bottom: none;
+  border-bottom: none; 
   padding-bottom: 0;
 }
-
 section p {
   margin-bottom: 1rem;
-  color: var(--text-muted);
+  color: var(--text-muted); 
 }
 
-/* Light mode overrides */
 .light-mode section h2 {
-  color: var(--accent-light); /* ✅ unified jewel purple from palette */
-  text-shadow: none;
+  color: var(--accent-light); 
+  text-shadow: none;         
 }
 
-/* ===========================
-   HERO SECTION
-=========================== */
 .hero-panel {
-  min-height: 100vh;
-  display: flex;
+  min-height: 100vh;             
+  display: flex;                 
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
-  background: var(--bg-panel);
-  transition: background 0.3s ease;
+  background: var(--bg-panel);      
+  transition: background 0.3s ease; 
 }
-
 .hero-wrapper {
-  max-width: 900px;
+  max-width: 900px; 
   width: 100%;
   text-align: center;
   margin: 0 auto;
 }
-
 .hero-title {
   font-size: 2rem;
 }
-
 .hero-title span {
-  color: #ef4444; /* red in dark mode */
+  color: #ef4444;
 }
-
 .hero-subtitle {
   font-size: 1.25rem;
-  color: #ef4444; /* red always */
+  color: #ef4444; 
 }
-
 .hero-description {
   font-size: 1rem;
-  color: var(--text);
-  max-width: 600px;
+  color: var(--text); 
+  max-width: 600px;   
   margin: 0 auto;
 }
 
-/* Light mode overrides */
 .light-mode .hero-panel {
-  background: var(--bg-soft);
+  background: var(--bg-soft); 
 }
-
 .light-mode .hero-title span {
-  color: #a855f7; /* purple in light mode */
+  color: #a855f7; 
 }
-
 .light-mode .hero-description {
   color: #000000;
 }
-/* ===========================
-   EDUCATION SECTION
-=========================== */
+
 .education-panel {
-  min-height: 100vh;
-  display: flex;
+  min-height: 100vh;              
+  display: flex;                 
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
   transition: background 0.3s ease;
 }
-
 .education-wrapper {
-  max-width: 900px;
+  max-width: 900px;               
   width: 100%;
   text-align: center;
 }
-
 .education-content {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  flex-direction: column;       
+  gap: 2rem;                     
   margin-top: 2rem;
 }
-
 .edu-block {
-  background: var(--bg-soft);
+  background: var(--bg-soft);    
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.25);
+  box-shadow: 0 0 12px rgba(0,0,0,0.25); 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .edu-block:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 18px var(--accent);
+  transform: translateY(-6px);   
+  box-shadow: 0 0 18px var(--accent); 
 }
-
 .edu-block h3 {
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
-  color: var(--secondary);
+  color: var(--secondary);        
 }
-
 .edu-block p {
   margin-bottom: 0.5rem;
   font-size: 1rem;
-  color: var(--text);
+  color: var(--text);            
 }
-
 .edu-years {
   font-size: 0.9rem;
-  color: var(--accent-light);
+  color: var(--accent-light);    
 }
 
-/* Light mode overrides */
 .light-mode .education-panel {
   background: var(--bg-soft);
 }
-
 .light-mode .edu-block {
-  background: #ffffff;
+  background: #ffffff;           
   box-shadow: 0 0 12px rgba(0,0,0,0.15);
 }
-
 .light-mode .edu-block h3 {
-  color: var(--accent-light); /* ✅ jewel purple from palette */
+  color: var(--accent-light);    
 }
-
 .light-mode .edu-block p,
 .light-mode .edu-years {
-  color: #000000;
+  color: #000000;                
 }
-/* ===========================
-   ACHIEVEMENTS SECTION
-=========================== */
+
 .achievement-card h3 {
   margin-bottom: 0.5rem;
   font-size: 1.4rem;
-  color: var(--accent-light); /* default accent-light */
+  color: var(--accent-light);
 }
 
-/* Light mode overrides */
 .light-mode .achievement-card h3 {
-  color: var(--accent-light); /* ✅ jewel purple from palette */
+  color: var(--accent-light); 
 }
-/* ===========================
-   SKILLS SECTION
-=========================== */
+
 .skills-panel {
-  min-height: 100vh;
-  display: flex;
+  min-height: 100vh;              
+  display: flex;                  
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
   transition: background 0.3s ease;
 }
-
 .skills-wrapper {
-  max-width: 1200px;
+  max-width: 1200px;             
   width: 100%;
 }
-
 .skills-content {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr;     
   gap: 2rem;
   margin-top: 2rem;
 }
 
-/* Responsive grid */
 @media (min-width: 768px) {
   .skills-content {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); 
   }
 }
 @media (min-width: 1024px) {
   .skills-content {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); 
   }
 }
-
 .skill-block {
-  background: var(--bg-soft);
+  background: var(--bg-soft);     
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0,0,0,0.25);
+  box-shadow: 0 0 12px rgba(0,0,0,0.25); 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
 }
-
 .skill-block:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 0 18px var(--accent);
+  transform: translateY(-6px);    
+  box-shadow: 0 0 18px var(--accent); 
 }
-
 .skill-block h3 {
   margin-bottom: 0.5rem;
   font-size: 1.5rem;
-  color: var(--secondary);
+  color: var(--secondary);        
 }
-
 .skill-block p {
   margin-bottom: 0.5rem;
   font-size: 1rem;
-  color: var(--text);
+  color: var(--text);            
 }
-
 .skill-block ul {
   margin-left: 1rem;
-  color: var(--text);
+  color: var(--text);             
 }
 
-/* Light mode overrides */
 .light-mode .skills-panel {
   background: var(--bg-soft);
 }
-
 .light-mode .skill-block {
-  background: #ffffff;
+  background: #ffffff;            
   box-shadow: 0 0 12px rgba(0,0,0,0.15);
 }
-
 .light-mode .skill-block h3 {
-  color: var(--accent-light); /* ✅ jewel purple from palette */
+  color: var(--accent-light);    
 }
-
 .light-mode .skill-block p,
 .light-mode .skill-block ul {
-  color: #000000;
+  color: #000000;                 
 }
-/* ===========================
-   Projects Section Titles
-=========================== */
+
 .projects-panel .skill-card h5 a,
 .projects-panel .skill-card h5 {
-  color: var(--secondary); /* ✅ theme-aware accent */
+  color: var(--secondary);        
   text-shadow: none;
   transition: color 0.3s ease;
 }
 
-/* ===========================
-   Achievements Section Titles
-=========================== */
 .achievements-panel .skill-card h5 {
-  color: var(--secondary); /* ✅ theme-aware accent */
+  color: var(--secondary);       
   text-shadow: none;
   transition: color 0.3s ease;
 }
 
-/* ===========================
-   About Section
-=========================== */
 .about-content {
   display: flex;
-  justify-content: flex-start;       /* left-aligned */
+  justify-content: flex-start;       
   align-items: center;
-  gap: 2rem;
-  padding-left: 10rem;
+  gap: 2rem;                        
+  padding-left: 10rem;              
   padding-right: 2rem;
-  flex-wrap: wrap;
+  flex-wrap: wrap;                  
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: hidden;                
 }
-
 .about-wrapper {
   max-width: 100%;
   overflow-x: hidden;
 }
-
 .about-text {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding: 1rem 2rem;
 }
-
 .about-inner-text {
-  max-width: 500px;
+  max-width: 500px;                  
   text-align: left;
   font-size: 1rem;
   color: var(--text);
   margin-left: 1rem;
 }
 
-/* Accent panel (theme-aware glow) */
 .about-accent {
   height: 100%;
   width: 100%;
   border-radius: 12px;
   background: linear-gradient(135deg, var(--bg-soft), var(--bg-panel));
   box-shadow: 0 0 24px var(--accent-light);
-  animation: pulseGlow 4s ease-in-out infinite;
+  animation: pulseGlow 4s ease-in-out infinite; 
 }
 
-/* Glow animation (theme-aware) */
 @keyframes pulseGlow {
   0%, 100% {
     box-shadow: 0 0 24px var(--accent-light);
@@ -398,33 +326,28 @@ section p {
   }
 }
 
-/* Responsive: stack on mobile */
 @media (max-width: 768px) {
   .about-content {
-    flex-direction: column;
+    flex-direction: column;    
     justify-content: center;
     padding-left: 1rem;
     padding-right: 1rem;
   }
-
   .about-inner-text {
-    margin-left: 0; /* ✅ reset offset for mobile */
+    margin-left: 0;               
   }
-
   .about-accent {
-    display: none;
+    display: none;                 
   }
 }
-/* ===========================
-   Section Title + Divider
-=========================== */
+
 .section-title {
   font-size: 2rem;
   text-align: center;
   color: var(--accent-light);
   letter-spacing: 1px;
   margin-bottom: 0.25rem;
-  text-shadow: 0 0 6px rgba(217,76,76,0.3);
+  text-shadow: 0 0 6px rgba(217,76,76,0.3); 
 }
 .section-divider {
   width: 60px;
@@ -435,21 +358,15 @@ section p {
   box-shadow: 0 0 6px var(--accent-light);
 }
 
-
-/* Light mode overrides */
 .light-mode .section-title {
-  color: var(--accent-light); /* ✅ jewel purple from palette */
-  text-shadow: none;
+  color: var(--accent-light); 
+  text-shadow: none;          
 }
-
 .light-mode .section-divider {
-  background-color: var(--accent-light); /* ✅ jewel purple divider */
+  background-color: var(--accent-light);
   box-shadow: none;
 }
-/* ===========================
-   ANIMATIONS (Fade)
-=========================== */
-/* Fade-up (generic sections) */
+
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -462,7 +379,6 @@ section p {
   animation: fadeUp 0.6s ease forwards;
 }
 
-/* Fade-up (titles) */
 @keyframes fadeUpTitle {
   from { opacity: 0; transform: translateY(30px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -475,7 +391,6 @@ section p {
   animation: fadeUpTitle 0.6s ease forwards;
 }
 
-/* Fade-right (cards/content) */
 @keyframes fadeRight {
   from { opacity: 0; transform: translateX(40px); }
   to   { opacity: 1; transform: translateX(0); }
@@ -488,10 +403,6 @@ section p {
   animation: fadeRight 0.6s ease forwards;
 }
 
-/* ===========================
-   STAGGERED DELAYS
-=========================== */
-/* Artist cards stagger */
 #ts-card.fade-right.visible {
   animation-delay: 0.2s;
 }
@@ -502,7 +413,6 @@ section p {
   animation-delay: 0.6s;
 }
 
-/* Achievements skill cards stagger */
 .skill-card:nth-child(1).fade-right.visible {
   animation-delay: 0.2s;
 }
@@ -515,39 +425,34 @@ section p {
 .skill-card:nth-child(4).fade-right.visible {
   animation-delay: 0.8s;
 }
-/* ===========================
-   BUTTONS
-=========================== */
+
 .button {
   display: inline-block;
-  background: var(--accent);
+  background: var(--accent);            
   padding: 10px 18px;
   border-radius: 8px;
   font-family: "Inter", sans-serif;
   font-size: 15px;
-  color: #fff;
+  color: #fff;                           
   text-decoration: none;
-  border: 1px solid #5a1111;
+  border: 1px solid #5a1111;            
   transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.05s ease;
   margin-top: 0.5rem;
   max-width: 90%;
-  white-space: nowrap;
+  white-space: nowrap;                  
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis;             
   cursor: pointer;
 }
-
 .button:hover {
-  background: var(--accent-light);
+  background: var(--accent-light);       
   box-shadow: 0 0 12px rgba(217,76,76,0.35);
-  transform: translateY(-2px);
+  transform: translateY(-2px);          
 }
-
 .button:active {
-  transform: translateY(1px);
+  transform: translateY(1px);            
 }
 
-/* Ghost button */
 .button-ghost {
   background: transparent;
   color: var(--accent-light);
@@ -555,18 +460,15 @@ section p {
   transition: background 0.2s ease, border-color 0.2s ease, transform 0.05s ease;
   cursor: pointer;
 }
-
 .button-ghost:hover {
-  background: rgba(217,76,76,0.1);
+  background: rgba(217,76,76,0.1);      
   border-color: var(--accent-light);
   transform: translateY(-2px);
 }
-
 .button-ghost:active {
   transform: translateY(1px);
 }
 
-/* Intro section overrides */
 .intro-buttons .button {
   padding: 0.75rem 1.5rem;
   border-radius: 6px;
@@ -574,68 +476,54 @@ section p {
   transition: background 0.3s ease;
 }
 
-/* Primary button */
 .button-primary {
   background-color: var(--accent);
-  color: var(--bg);
+  color: var(--bg);                     
 }
 
-/* Ghost button (intro override) */
 .button-ghost {
   background-color: transparent;
   border: 2px solid var(--text-muted);
   color: var(--text-muted);
 }
 
-/* ===========================
-   CURSOR GLOW
-=========================== */
 #cursor-glow {
   position: fixed;
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  pointer-events: none;
+  pointer-events: none;                 
   background: radial-gradient(circle, rgba(168, 50, 50, 0.4), transparent 60%);
-  mix-blend-mode: screen;
+  mix-blend-mode: screen;               
   transition: transform 0.3s ease, opacity 0.3s ease;
-  z-index: 9999;
-  opacity: 0;
-  transform: translate3d(-9999px, -9999px, 0) scale(1);
+  z-index: 9999;                       
+  opacity: 0;                           
+  transform: translate3d(-9999px, -9999px, 0) scale(1); 
 }
 
-/* ===========================
-   CONTACT ICONS
-=========================== */
 .contact-icons {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1.5rem;                     
   margin-top: 1rem;
 }
-
 .contact-link i {
-  font-size: 2rem;
-  color: var(--accent);
+  font-size: 2rem;                      
+  color: var(--accent);                
   transition: color 0.3s ease, transform 0.2s ease;
 }
-
 .contact-link i:hover {
-  color: var(--accent-light);
-  transform: scale(1.2);
+  color: var(--accent-light);           
+  transform: scale(1.2);                
+}
+.contact-link i:active {
+  transform: scale(1.1);                
 }
 
-.contact-link i:active {
-  transform: scale(1.1);
-}
-/* ===========================
-   ARTIST CARDS WITH FLIP ANIMATION
-=========================== */
 .artist-card audio {
-  visibility: hidden;
+  visibility: hidden; 
   height: 0;
 }
-
 .artist-card {
   max-width: 240px;
   width: 100%;
@@ -646,21 +534,18 @@ section p {
   border-radius: 10px;
   padding-bottom: 1rem;
   height: auto;
-  perspective: 1000px;
+  perspective: 1000px; 
 }
-
 .artist-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transform-style: preserve-3d;
+  transform-style: preserve-3d; 
   transition: transform 0.6s ease;
 }
-
 .artist-card:hover .artist-inner {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg); 
 }
-
 .artist-front,
 .artist-back {
   position: absolute;
@@ -675,23 +560,18 @@ section p {
   justify-content: space-between;
   overflow: hidden;
 }
-
 .artist-front {
   z-index: 2;
   position: relative;
   justify-content: flex-start;
 }
-
 .artist-back {
-  transform: rotateY(180deg);
+  transform: rotateY(180deg); 
   text-align: center;
   overflow-y: auto;
   padding: 1rem 1rem 2rem;
 }
 
-/* ===========================
-   ALBUM WRAPPER
-=========================== */
 .album-wrapper {
   display: flex;
   flex-direction: column;
@@ -703,15 +583,11 @@ section p {
   transform: translateX(40px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-
 .album-wrapper.visible {
   opacity: 1;
   transform: translateX(0);
 }
 
-/* ===========================
-   ALBUM TITLES
-=========================== */
 .album-title,
 #ts-album-title,
 #paramore-album-title,
@@ -724,25 +600,20 @@ section p {
   text-align: center;
   transition: opacity 0.5s ease;
 }
-
 .album-title {
   padding: 0 0.5rem;
   word-break: break-word;
   line-height: 1.2;
 }
 
-/* Light mode album titles */
 .light-mode .album-title,
 .light-mode #ts-album-title,
 .light-mode #paramore-album-title,
 .light-mode #mcr-album-title {
-  color: var(--accent-light); /* ✅ jewel purple from palette */
+  color: var(--accent-light); 
   text-shadow: none;
 }
 
-/* ===========================
-   ALBUM COVER
-=========================== */
 .album-cover {
   width: 150px;
   height: 150px;
@@ -751,14 +622,10 @@ section p {
   object-fit: cover;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
-
 .album-cover:hover {
   transform: scale(1.05);
 }
 
-/* ===========================
-   ARTIST INFO
-=========================== */
 .artist-name {
   font-size: 1.1rem;
   font-weight: bold;
@@ -767,14 +634,12 @@ section p {
   color: var(--text);
   text-align: center;
 }
-
 .artist-caption {
   margin-top: 0.5rem;
   padding: 0 1rem;
   max-width: 240px;
   width: 100%;
 }
-
 .artist-reflection {
   font-size: 0.9rem;
   font-style: italic;
@@ -784,12 +649,10 @@ section p {
   word-break: break-word;
 }
 
-/* Light mode overrides */
 .light-mode .artist-name {
-  color: var(--accent-light); /* ✅ jewel purple from palette */
+  color: var(--accent-light);
 }
 
-/* Divider line before reflection */
 .artist-caption::before {
   content: "";
   display: block;
@@ -801,15 +664,11 @@ section p {
   box-shadow: 0 0 6px rgba(217,76,76,0.4);
 }
 
-/* ===========================
-   ARTIST GRID
-=========================== */
 .artist-item {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .artist-container {
   width: 100%;
   max-width: 1100px;
@@ -817,7 +676,6 @@ section p {
   padding: 1rem;
   overflow: hidden;
 }
-
 .artist-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -827,194 +685,114 @@ section p {
   width: 100%;
   box-sizing: border-box;
 }
-/* ===========================
-   SMALL PHONES: ≤375px
-=========================== */
+
 @media (max-width: 375px) {
-  header.intro h1 {
-    font-size: 1.6rem;
-  }
-  section h2 {
-    font-size: 1.1rem;
-  }
-  .about-page {
-    padding: 1rem;
-  }
-  .artist-card {
-    max-width: 150px;
-    height: auto;
-    padding: 0.75rem;
-  }
-  .album-cover {
-    width: 100px;
-    height: 100px;
-  }
-  .album-title,
-  .artist-reflection {
+  header.intro h1 { font-size: 1.6rem; }
+  section h2 { font-size: 1.1rem; }
+  .about-page { padding: 1rem; }
+  .artist-card { max-width: 150px; height: auto; padding: 0.75rem; }
+  .album-cover { width: 100px; height: 100px; }
+  .album-title, .artist-reflection {
     font-size: 0.85rem;
     word-break: break-word;
     white-space: normal;
     text-align: center;
   }
   .artist-grid {
-    display: flex;
+    display: flex;                
     flex-direction: column;
     align-items: center;
     gap: 1rem;
   }
 }
 
-/* ===========================
-   LARGE PHONES: 376px–600px
-=========================== */
 @media (min-width: 376px) and (max-width: 600px) {
-  header.intro h1 {
-    font-size: 1.8rem;
-  }
-  section h2 {
-    font-size: 1.3rem;
-  }
-  .artist-card {
-    max-width: 180px;
-    height: auto;
-    padding: 1rem;
-  }
-  .album-cover {
-    width: 120px;
-    height: 120px;
-  }
-  .album-title,
-  .artist-reflection {
+  header.intro h1 { font-size: 1.8rem; }
+  section h2 { font-size: 1.3rem; }
+  .artist-card { max-width: 180px; height: auto; padding: 1rem; }
+  .album-cover { width: 120px; height: 120px; }
+  .album-title, .artist-reflection {
     font-size: 0.9rem;
     word-break: break-word;
     white-space: normal;
     text-align: center;
   }
   .artist-grid {
-    display: flex;
+    display: flex;              
     flex-direction: column;
     align-items: center;
     gap: 1.2rem;
   }
 }
 
-/* ===========================
-   TABLETS: 601px–900px
-=========================== */
 @media (min-width: 601px) and (max-width: 900px) {
-  header.intro h1 {
-    font-size: 2.2rem;
-  }
-  section h2 {
-    font-size: 1.5rem;
-  }
-  .about-page {
-    max-width: 95%;
-    padding: 1.5rem;
-  }
-  .artist-card {
-    max-width: 200px;
-    height: auto;
-    padding: 1rem;
-  }
-  .album-cover {
-    width: 140px;
-    height: 140px;
-  }
+  header.intro h1 { font-size: 2.2rem; }
+  section h2 { font-size: 1.5rem; }
+  .about-page { max-width: 95%; padding: 1.5rem; }
+  .artist-card { max-width: 200px; height: auto; padding: 1rem; }
+  .album-cover { width: 140px; height: 140px; }
   .artist-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); 
     gap: 1.5rem;
     justify-items: center;
   }
 }
 
-/* ===========================
-   LAPTOPS: 901px–1280px
-=========================== */
 @media (min-width: 901px) and (max-width: 1280px) {
-  header.intro h1 {
-    font-size: 2.6rem;
-  }
-  section h2 {
-    font-size: 1.6rem;
-  }
-  .about-page {
-    max-width: 900px;
-    padding: 2rem;
-  }
-  .artist-card {
-    max-width: 220px;
-    height: auto;
-    padding: 1.25rem;
-  }
-  .album-cover {
-    width: 150px;
-    height: 150px;
-  }
+  header.intro h1 { font-size: 2.6rem; }
+  section h2 { font-size: 1.6rem; }
+  .about-page { max-width: 900px; padding: 2rem; }
+  .artist-card { max-width: 220px; height: auto; padding: 1.25rem; }
+  .album-cover { width: 150px; height: 150px; }
   .artist-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); 
     gap: 2rem;
     justify-items: center;
   }
 }
-/* ===========================
-   SCROLLBAR STYLING
-=========================== */
+
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 10px; /
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-soft);
+  background: var(--bg-soft); 
 }
 ::-webkit-scrollbar-thumb {
   background: var(--accent);
   border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-light);
+  background: var(--accent-light); 
 }
 
-/* ===========================
-   DARK MODE SPECIFIC
-=========================== */
 .dark-mode section img {
   box-shadow: 0 0 16px rgba(0,0,0,0.5);
 }
-
 .dark-mode .artist-front,
 .dark-mode .artist-back {
   background: var(--bg-panel);
 }
-
 .dark-mode .album-cover {
   box-shadow: 0 0 16px rgba(0,0,0,0.5);
 }
-
 .dark-mode footer {
   border-top: 1px solid var(--border);
 }
 
-/* ===========================
-   LIGHT MODE SPECIFIC
-=========================== */
 .light-mode section img {
   box-shadow: 0 0 12px rgba(0,0,0,0.2);
 }
-
 .light-mode .artist-front,
 .light-mode .artist-back {
   background: var(--bg-soft);
 }
-
 .light-mode .album-cover {
   box-shadow: 0 0 12px rgba(0,0,0,0.2);
 }
-
 .light-mode footer {
   border-top: 1px solid var(--border);
 }
 
-/* Formal sections: pure black text in light mode */
 .light-mode .education-panel,
 .light-mode .achievements-panel,
 .light-mode .contact-panel,
@@ -1022,7 +800,6 @@ section p {
 .light-mode .projects-panel {
   color: #000000;
 }
-
 .light-mode .education-panel h3,
 .light-mode .achievements-panel h3,
 .light-mode .contact-panel h3,
@@ -1037,9 +814,7 @@ section p {
 .light-mode .projects-panel li {
   color: #000000;
 }
-/* ===========================
-   NAVBAR BASE
-=========================== */
+
 .navbar {
   display: flex;
   flex-wrap: wrap;
@@ -1053,7 +828,6 @@ section p {
   z-index: 1000;
 }
 
-/* Nav header */
 .nav-header {
   display: flex;
   justify-content: space-between;
@@ -1061,7 +835,6 @@ section p {
   width: 100%;
 }
 
-/* Menu toggle button */
 .menu-toggle {
   background: transparent;
   border: none;
@@ -1074,7 +847,6 @@ section p {
   color: var(--accent-light);
 }
 
-/* Nav menu */
 .nav-menu {
   display: flex;
   flex-wrap: wrap;
@@ -1093,7 +865,6 @@ section p {
   color: var(--accent-light);
 }
 
-/* Theme toggle button */
 .theme-toggle {
   background: transparent;
   border: none;
@@ -1106,37 +877,32 @@ section p {
   color: var(--accent-light);
 }
 
-/* Responsive breakpoints for nav */
 @media (max-width: 768px) {
   .nav-menu {
-    display: none;
+    display: none;              
     flex-direction: column;
     gap: 0.5rem;
     margin-top: 0.5rem;
     width: 100%;
   }
   .nav-menu.open {
-    display: flex;
+    display: flex;              
   }
   .theme-toggle {
     margin-left: auto;
   }
 }
-
 @media (min-width: 1025px) {
   .menu-toggle {
-    display: none;
+    display: none;             
   }
   .nav-menu {
-    display: flex !important;
+    display: flex !important;  
     flex-direction: row;
     gap: 1rem;
   }
 }
 
-/* ===========================
-   INTRO SECTION
-=========================== */
 .intro-section {
   padding: 4rem 2rem;
   background-color: var(--bg-panel);
@@ -1151,9 +917,6 @@ section p {
   color: var(--text-muted);
 }
 
-/* ===========================
-   PANELS
-=========================== */
 .panel {
   background: var(--bg-panel);
   border: 1px solid var(--border);
@@ -1164,28 +927,29 @@ section p {
   box-shadow: 0 0 20px var(--shadow);
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
-
 .panel:hover {
-  background: var(--hover);
-  box-shadow: 0 0 28px rgba(168, 50, 50, 0.35);
+  background: var(--hover); 
+  box-shadow: 0 0 28px rgba(168, 50, 50, 0.35); 
 }
 
-/* ===========================
-   FOOTER
-=========================== */
 footer {
   border-top: 1px solid var(--border);
   padding: 1rem;
   text-align: center;
   color: var(--text-muted);
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
 }
-/* ===========================
-   TRANSITIONS
-=========================== */
+.light-mode footer {
+  color: #6b6a68;
+}
+.dark-mode footer {
+  color: #a8a6a2; /
+}
+
 html, body {
   transition: background 0.4s ease, color 0.4s ease;
 }
-
 .panel,
 .skill-card,
 .edu-block,
@@ -1195,7 +959,6 @@ html, body {
 footer {
   transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 }
-
 section h2,
 section p,
 .hero-title span,
@@ -1206,16 +969,14 @@ section p,
 .contact-link i {
   transition: color 0.4s ease, text-shadow 0.4s ease;
 }
-
 .theme-toggle i {
-  transition: color 0.3s ease, transform 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+.theme-toggle i.fade-out {
+  opacity: 0;
+  transform: rotate(90deg);
 }
 
-body {
-  transition: background-image 0.4s ease;
-}
-
-/* Theme fade overlay */
 #theme-fade {
   position: fixed;
   inset: 0;
@@ -1229,47 +990,35 @@ body.theme-fading #theme-fade {
   opacity: 1;
 }
 
-/* ===========================
-   SKILL CARDS + HOVER MEDIA
-=========================== */
 .skill-card {
   position: relative;
   overflow: hidden;
 }
-
 .hover-media {
   position: absolute;
   inset: 0;
-  opacity: 0;
+  opacity: 0;                         
   transition: opacity 0.4s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.6);         
 }
-
 .skill-card:hover .hover-media {
-  opacity: 1;
+  opacity: 1;                         
 }
 
-/* ===========================
-   HERO GREETING COLOR OVERRIDES
-=========================== */
 #hero-greeting {
   transition: color 0.3s ease;
 }
 
 body.dark #hero-greeting {
-  color: #ef4444; /* red in dark mode */
+  color: #ef4444; 
 }
-
 body.light #hero-greeting {
-  color: #6b21a8; /* violet/purple in light mode */
+  color: #6b21a8;
 }
 
-/* ===========================
-   CANVAS STYLING
-=========================== */
 canvas {
   display: block;
   margin: 1rem auto 0;
@@ -1278,19 +1027,13 @@ canvas {
   height: 80px;
   background: transparent;
 }
-
 .dark-mode canvas {
   filter: drop-shadow(0 0 6px var(--accent-light));
 }
-
 .light-mode canvas {
   filter: drop-shadow(0 0 6px var(--accent));
 }
-/* ===========================
-   CONSISTENCY + FINAL POLISH
-=========================== */
 
-/* Ensure all cards share unified styling */
 .edu-block,
 .skill-block,
 .artist-card,
@@ -1300,7 +1043,6 @@ canvas {
   transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
 }
 
-/* Hover lift effect across all cards */
 .edu-block:hover,
 .skill-block:hover,
 .artist-card:hover,
@@ -1309,7 +1051,6 @@ canvas {
   box-shadow: 0 0 18px var(--accent);
 }
 
-/* Unified headings inside cards */
 .edu-block h3,
 .skill-block h3,
 .artist-name {
@@ -1317,37 +1058,21 @@ canvas {
   margin-top: 0.5rem;
 }
 
-/* Theme-aware accent consistency */
 .dark-mode .edu-block h3,
 .dark-mode .skill-block h3,
 .dark-mode .artist-name {
-  color: var(--secondary); /* gold/yellow accent in dark mode */
+  color: var(--secondary); 
 }
-
 .light-mode .edu-block h3,
 .light-mode .skill-block h3,
 .light-mode .artist-name {
-  color: var(--accent); /* jewel purple accent in light mode */
+  color: var(--accent); 
 }
 
-/* Smooth transitions for theme toggle icon */
 .theme-toggle i {
   transition: color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
 }
 .theme-toggle i.fade-out {
   opacity: 0;
   transform: rotate(90deg);
-}
-
-/* Ensure footer text adapts cleanly */
-footer {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  transition: color 0.3s ease;
-}
-.light-mode footer {
-  color: #6b6a68;
-}
-.dark-mode footer {
-  color: #a8a6a2;
 }
