@@ -84,6 +84,7 @@
     document.body.style.overflow = 'hidden'; // kill background scroll while Doom reigns
     tickDoom();
     doomTimer = setInterval(tickDoom, 1000);
+    stopAllAudio(''); // silence any artist samples — only Doom's music plays here
     document.getElementById('doomBgVideo')?.play().catch(() => {});
     const music = document.getElementById('doomMusic');
     if (music) { music.muted = false; music.currentTime = 0; music.play().catch(() => {}); }
@@ -117,7 +118,7 @@
     void document.querySelector('.brand')?.offsetWidth;
     document.querySelector('.brand')?.classList.add('egg-hit');
     try {
-      const a = new Audio(encodeURI('audios/easter egg.m4a'));
+      const a = new Audio(encodeURI('audios/Easter egg.m4a'));
       a.play().catch(() => {});
     } catch {}
   }
