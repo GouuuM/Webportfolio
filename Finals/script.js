@@ -278,6 +278,13 @@
     img.src = album.src;
     img.alt = album.title + ' album';
     title.textContent = album.title;
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && img.animate) {
+      img.animate([{ opacity: 0.15 }, { opacity: 1 }], { duration: 350, easing: 'ease' });
+      title.animate(
+        [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }],
+        { duration: 350, easing: 'ease' }
+      );
+    }
     const audio = document.querySelector(`audio[data-audio="${key}"]`);
     const wasPlaying = keepPlaying || (audio && !audio.paused && !audio.ended);
     syncAudio(key, wasPlaying);
