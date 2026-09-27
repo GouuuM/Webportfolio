@@ -170,11 +170,11 @@ img,video{max-width:100%;display:block;border-radius:10px}
 .fade-section.visible,.fade-up.visible{opacity:1;transform:none}
 
 /* CHATBOT */
-.chat-bubble{position:fixed;right:1.2rem;bottom:calc(1.2rem + env(safe-area-inset-bottom, 0px));width:58px;height:58px;min-width:58px;min-height:58px;border-radius:50%;border:2px solid var(--accent);background:var(--bg-panel);color:#fff;font-size:1.5rem;cursor:pointer;z-index:1500;box-shadow:0 10px 30px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;transition:transform .2s,border-color .2s;overflow:hidden;padding:0;touch-action:manipulation}
+.chat-bubble{position:fixed;right:1.2rem;bottom:1.2rem;width:58px;height:58px;border-radius:50%;border:2px solid var(--accent);background:var(--bg-panel);color:#fff;font-size:1.5rem;cursor:pointer;z-index:1500;box-shadow:0 10px 30px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;transition:transform .2s,border-color .2s;overflow:hidden;padding:0}
 .chat-bubble:hover{border-color:var(--gold);transform:translateY(-2px)}
 .chat-bubble-img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .chat-ping{position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:#22c55e;border:2px solid var(--bg);animation:pulse 1.8s infinite}
-.chat-panel{position:fixed;right:1.2rem;bottom:calc(5.2rem + env(safe-area-inset-bottom, 0px));width:min(360px,calc(100vw - 2.4rem));max-height:min(540px,calc(100vh - 8rem));max-height:min(540px,calc(100dvh - 8rem));background:var(--bg-panel);border:1px solid var(--border);border-radius:16px;z-index:1500;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.45);animation:chatIn .25s ease}
+.chat-panel{position:fixed;right:1.2rem;bottom:5.2rem;width:min(360px,calc(100vw - 2.4rem));max-height:min(540px,calc(100vh - 8rem));background:var(--bg-panel);border:1px solid var(--border);border-radius:16px;z-index:1500;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.45);animation:chatIn .25s ease}
 .chat-panel[hidden]{display:none}
 @keyframes chatIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
 .chat-head{display:flex;align-items:center;justify-content:space-between;padding:.5rem .8rem;border-bottom:1px solid var(--border);background:var(--bg-soft)}
@@ -201,9 +201,9 @@ img,video{max-width:100%;display:block;border-radius:10px}
 .chat-chips button{font:inherit;font-size:.8rem;border:1px solid var(--border);background:transparent;color:var(--text);padding:.3rem .7rem;border-radius:999px;cursor:pointer}
 .chat-chips button:hover{border-color:var(--accent);color:var(--accent)}
 .chat-form{display:flex;gap:.5rem;padding:.7rem .8rem;border-top:1px solid var(--border)}
-.chat-form input{flex:1;min-width:0;background:var(--bg-soft);border:1px solid var(--border);border-radius:10px;padding:.7rem .9rem;color:var(--text);font:inherit;font-size:16px}
+.chat-form input{flex:1;background:var(--bg-soft);border:1px solid var(--border);border-radius:10px;padding:.6rem .8rem;color:var(--text);font:inherit;font-size:.9rem}
 .chat-form input:focus{border-color:var(--accent);outline:none}
-.chat-send{padding:.6rem .9rem;min-width:44px;min-height:44px}
+.chat-send{padding:.6rem .9rem}
 
 /* DOOM EASTER EGG — fully self-themed: Doom fonts + Doom colors, ignores site theme */
 .doom-overlay{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:1.2rem;overflow:hidden;background:radial-gradient(900px 500px at 50% 10%,#14532d 0%,#07130d 55%,#020604 100%)}
@@ -253,15 +253,6 @@ img,video{max-width:100%;display:block;border-radius:10px}
   .grid-3,.artist-grid{grid-template-columns:1fr}
   .flip{height:480px}
   .section{padding:3.5rem 0}
-  /* CHATBOT mobile: full-width bottom sheet, big touch targets */
-  .chat-bubble{right:.9rem;width:56px;height:56px;min-width:56px;min-height:56px}
-  .chat-panel{right:.75rem;left:.75rem;width:auto;bottom:calc(4.9rem + env(safe-area-inset-bottom, 0px));max-height:72vh;max-height:72dvh}
-  .chat-msgs{min-height:160px;max-height:44vh;max-height:44dvh;padding:.8rem}
-  .msg{max-width:92%;font-size:.95rem}
-  .chat-chips{flex-wrap:nowrap;overflow-x:auto;padding:.6rem .8rem;-webkit-overflow-scrolling:touch}
-  .chat-chips button{flex-shrink:0;font-size:.85rem;padding:.5rem .95rem;min-height:36px}
-  .chat-form{padding:.7rem .8rem calc(.7rem + env(safe-area-inset-bottom, 0px))}
-  .chat-close{min-width:44px;min-height:44px}
   /* DOOM mobile: compact card, no scroll */
   .doom-card{padding:1.4rem 1rem}
   .doom-count{gap:.45rem;margin:.6rem 0 1rem}
