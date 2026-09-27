@@ -174,7 +174,7 @@ img,video{max-width:100%;display:block;border-radius:10px}
 .chat-bubble:hover{border-color:var(--gold);transform:translateY(-2px)}
 .chat-bubble-img{width:100%;height:100%;object-fit:cover;border-radius:50%}
 .chat-ping{position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:#22c55e;border:2px solid var(--bg);animation:pulse 1.8s infinite}
-.chat-panel{position:fixed;right:1.2rem;bottom:5.2rem;width:min(360px,calc(100vw - 2.4rem));max-height:min(540px,calc(100vh - 8rem));background:var(--bg-panel);border:1px solid var(--border);border-radius:16px;z-index:1500;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.45);animation:chatIn .25s ease}
+.chat-panel{position:fixed;right:1.2rem;bottom:5.2rem;width:min(360px,calc(100vw - 2.4rem));height:min(540px,calc(100vh - 8rem));background:var(--bg-panel);border:1px solid var(--border);border-radius:16px;z-index:1500;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.45);animation:chatIn .25s ease}
 .chat-panel[hidden]{display:none}
 @keyframes chatIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
 .chat-head{display:flex;align-items:center;justify-content:space-between;padding:.5rem .8rem;border-bottom:1px solid var(--border);background:var(--bg-soft)}
@@ -184,7 +184,7 @@ img,video{max-width:100%;display:block;border-radius:10px}
 .chat-bot-id small{color:var(--muted);font-size:.7rem;display:flex;align-items:center;gap:.3rem}
 .online-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block}
 .chat-close{width:34px;height:34px;font-size:.95rem}
-.chat-msgs{padding:1rem;display:flex;flex-direction:column;gap:.6rem;overflow-y:auto;min-height:220px;max-height:320px}
+.chat-msgs{padding:1rem;display:flex;flex-direction:column;gap:.6rem;overflow-y:auto;flex:1;min-height:0}
 .msg{max-width:92%;padding:.55rem .8rem;border-radius:8px;font-size:.88rem;line-height:1.45;position:relative}
 .msg.bot{background:var(--bg-soft);border:1px solid var(--border);border-left:3px solid var(--accent);align-self:flex-start;color:var(--text)}
 .msg.user{background:transparent;border:1px solid var(--border);border-right:3px solid var(--muted);align-self:flex-end}
