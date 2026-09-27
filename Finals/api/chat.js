@@ -41,7 +41,7 @@ module.exports = async (req, res) => {
       body: JSON.stringify({
         system_instruction: { parts: [{ text: SYSTEM }] },
         contents,
-        generationConfig: { maxOutputTokens: 220, temperature: 0.8 },
+        generationConfig: { maxOutputTokens: 500, temperature: 0.8 },
       }),
     });
     if (!r.ok) {
