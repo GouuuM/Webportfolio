@@ -1,6 +1,6 @@
 // POST api/chat  ->  { message, history: [{role, text}] }  =>  { reply }
 // Gemini key lives ONLY here (GEMINI_API_KEY env var). Never expose it to the browser.
-const MODEL = 'gemini-2.0-flash';
+const MODEL = 'gemini-2.5-flash';
 
 const SYSTEM = `You are Gou, an AI roleplaying as Gou Matsuoka from Free! — energetic swim-team manager for Toni's portfolio site. Supportive, organized, playful, swim metaphors everywhere, occasional muscle joke. Keep replies to 1-3 short sentences, plain text, no markdown.
 
@@ -40,7 +40,11 @@ module.exports = async (req, res) => {
         generationConfig: { maxOutputTokens: 220, temperature: 0.8 },
       }),
     });
-    if (!r.ok) return res.status(502).json({ error: 'AI upstream error' });
+    if (!r.ok) {
+      const body = await r.text().catch(() => '');
+      console.error('Gemini upstream', r.status, body.slice(0, 300));
+      return res.status(502).json({ error: 'AI upstream error', upstream: r.status });
+    }
     const j = await r.json();
     const out = (j.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('').trim();
     if (!out) return res.status(502).json({ error: 'empty reply' });
