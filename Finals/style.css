@@ -169,10 +169,6 @@ img,video{max-width:100%;display:block;border-radius:10px}
 .fade-section,.fade-up{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .fade-section.visible,.fade-up.visible{opacity:1;transform:none}
 
-/* CURSOR */
-#cursor-glow{position:fixed;width:140px;height:140px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 22%,transparent),transparent 65%);z-index:1;opacity:0;transform:translate(-50%,-50%)}
-@media (pointer:coarse){#cursor-glow{display:none}}
-
 /* CHATBOT */
 .chat-bubble{position:fixed;right:1.2rem;bottom:calc(1.2rem + env(safe-area-inset-bottom, 0px));width:58px;height:58px;min-width:58px;min-height:58px;border-radius:50%;border:2px solid var(--accent);background:var(--bg-panel);color:#fff;font-size:1.5rem;cursor:pointer;z-index:1500;box-shadow:0 10px 30px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;transition:transform .2s,border-color .2s;overflow:hidden;padding:0;touch-action:manipulation}
 .chat-bubble:hover{border-color:var(--gold);transform:translateY(-2px)}
@@ -181,17 +177,20 @@ img,video{max-width:100%;display:block;border-radius:10px}
 .chat-panel{position:fixed;right:1.2rem;bottom:calc(5.2rem + env(safe-area-inset-bottom, 0px));width:min(360px,calc(100vw - 2.4rem));max-height:min(540px,calc(100vh - 8rem));max-height:min(540px,calc(100dvh - 8rem));background:var(--bg-panel);border:1px solid var(--border);border-radius:16px;z-index:1500;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.45);animation:chatIn .25s ease}
 .chat-panel[hidden]{display:none}
 @keyframes chatIn{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
-.chat-head{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1rem;border-bottom:1px solid var(--border);background:var(--bg-soft)}
-.chat-bot-id{display:flex;align-items:center;gap:.7rem}
-.chat-avatar-img{width:38px;height:38px;border-radius:50%;object-fit:cover;border:1px solid var(--border);flex-shrink:0}
-.chat-bot-id strong{display:block;font-size:.95rem}
-.chat-bot-id small{color:var(--muted);font-size:.78rem;display:flex;align-items:center;gap:.3rem}
+.chat-head{display:flex;align-items:center;justify-content:space-between;padding:.5rem .8rem;border-bottom:1px solid var(--border);background:var(--bg-soft)}
+.chat-bot-id{display:flex;align-items:center;gap:.55rem}
+.chat-avatar-img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid var(--border);flex-shrink:0}
+.chat-bot-id strong{display:block;font-size:.85rem}
+.chat-bot-id small{color:var(--muted);font-size:.7rem;display:flex;align-items:center;gap:.3rem}
 .online-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;display:inline-block}
 .chat-close{width:34px;height:34px;font-size:.95rem}
 .chat-msgs{padding:1rem;display:flex;flex-direction:column;gap:.6rem;overflow-y:auto;min-height:220px;max-height:320px}
-.msg{max-width:85%;padding:.6rem .85rem;border-radius:14px;font-size:.9rem;line-height:1.45}
-.msg.bot{background:var(--bg-soft);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px;color:var(--text)}
-.msg.user{background:var(--accent-deep);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.msg{max-width:92%;padding:.55rem .8rem;border-radius:8px;font-size:.88rem;line-height:1.45;position:relative}
+.msg.bot{background:var(--bg-soft);border:1px solid var(--border);border-left:3px solid var(--accent);align-self:flex-start;color:var(--text)}
+.msg.user{background:transparent;border:1px solid var(--border);border-right:3px solid var(--muted);align-self:flex-end}
+.msg.bot::before{content:'GOU — MANAGER';display:block;font-size:.6rem;letter-spacing:1.5px;color:var(--accent);font-weight:700;margin-bottom:.2rem}
+.msg.user::before{content:'YOU';display:block;font-size:.6rem;letter-spacing:1.5px;color:var(--muted);font-weight:700;margin-bottom:.2rem;text-align:right}
+.msg.typing::before{display:none}
 .msg.bot a{color:var(--accent)}
 .msg.typing{display:flex;gap:4px;padding:.8rem 1rem}
 .msg.typing span{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:blink 1.2s infinite}
@@ -223,11 +222,6 @@ img,video{max-width:100%;display:block;border-radius:10px}
 .doom-btn{background:#c9a227;border-color:#c9a227;color:#1a1405;font-weight:700;font-family:'Share Tech Mono',monospace}
 .doom-btn:hover{background:#e0b93a;color:#000}
 .doom-actions{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
-
-/* THEME RIPPLE WIPE */
-#themeWipe{position:fixed;inset:0;z-index:1400;pointer-events:none;opacity:0;background:radial-gradient(circle at var(--wx,85%) var(--wy,32px),color-mix(in srgb,var(--accent) 30%,transparent),var(--bg) 62%);clip-path:circle(0 at var(--wx,85%) var(--wy,32px))}
-#themeWipe.wiping{animation:wipeIn .65s ease}
-@keyframes wipeIn{0%{opacity:1;clip-path:circle(0 at var(--wx,85%) var(--wy,32px))}55%{opacity:1;clip-path:circle(150vmax at var(--wx,85%) var(--wy,32px))}100%{opacity:0;clip-path:circle(150vmax at var(--wx,85%) var(--wy,32px))}}
 
 /* BUTTON PRESS */
 .btn:active{transform:scale(.96)}

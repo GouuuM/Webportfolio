@@ -33,33 +33,13 @@
   try { saved = localStorage.getItem('site-theme'); } catch {}
   if (!saved) saved = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
   applyTheme(saved);
-  let swapping = false;
   themeBtn?.addEventListener('click', () => {
-    if (swapping) return;
-    // ripple ring sweeps out first, theme swaps mid-ripple, wipe melts away revealing it
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const wipe = document.getElementById('themeWipe');
-    const flip = () => applyTheme(root.classList.contains('light-mode') ? 'dark' : 'light');
-    const doomRoll = () => {
-      // DOOM easter egg: 5.762% per toggle, 30s cooldown between appearances
-      if (Date.now() - lastDoomAt > 30000 && Math.random() < 0.05762) {
-        lastDoomAt = Date.now();
-        openDoom();
-      }
-    };
-    if (!wipe || reduced) { flip(); doomRoll(); return; }
-    swapping = true;
-    const r = themeBtn.getBoundingClientRect();
-    wipe.style.setProperty('--wx', (r.left + r.width / 2) + 'px');
-    wipe.style.setProperty('--wy', (r.top + r.height / 2) + 'px');
-    wipe.classList.remove('wiping');
-    void wipe.offsetWidth;
-    wipe.classList.add('wiping');
-    setTimeout(() => {
-      flip();
-      swapping = false;
-      doomRoll();
-    }, 320);
+    applyTheme(root.classList.contains('light-mode') ? 'dark' : 'light');
+    // DOOM easter egg: 5.762% per toggle, 30s cooldown between appearances
+    if (Date.now() - lastDoomAt > 30000 && Math.random() < 0.05762) {
+      lastDoomAt = Date.now();
+      openDoom();
+    }
   });
 
   /* ---------- DOOM EASTER EGG ---------- */
@@ -166,23 +146,6 @@
       });
     }, { rootMargin: '-40% 0px -55% 0px' });
     sections.forEach(s => spy.observe(s));
-  }
-
-  /* ---------- CURSOR GLOW (fine pointers only) ---------- */
-  const cursor = document.getElementById('cursor-glow');
-  if (cursor && window.matchMedia('(pointer:fine)').matches) {
-    let x = 0, y = 0, tx = 0, ty = 0, raf = null;
-    const render = () => {
-      x += (tx - x) * 0.18; y += (ty - y) * 0.18;
-      cursor.style.left = x + 'px'; cursor.style.top = y + 'px';
-      cursor.style.opacity = 1;
-      raf = requestAnimationFrame(render);
-    };
-    document.addEventListener('mousemove', e => {
-      tx = e.clientX; ty = e.clientY;
-      if (!raf) render();
-    }, { passive: true });
-    document.addEventListener('mouseleave', () => { cursor.style.opacity = 0; cancelAnimationFrame(raf); raf = null; });
   }
 
   /* ---------- ARTIST / INSPIRATION CARDS: theme-locked auto-shuffle ---------- */
@@ -446,7 +409,17 @@
       "His training menu: design (Canva, Figma, Photoshop, Premiere), frontend (HTML, CSS, JS, Sass, Tailwind, Bootstrap), backend (Java, PHP, Python, SQL). Beautiful stroke on every lap!",
       "Skills? Oh, I've drilled him well! Interfaces and websites with Canva/Figma, interactive frontends in HTML/CSS/JS, plus Java/PHP/Python/SQL on the backend. Fantastic muscle definition!"
     ]},
-    { k: ['project', 'work', 'portfolio', 'built', 'swift', 'what has he built', 'what has he done', 'what did he build', 'what did he make', 'made', 'created', 'done', 'showcase', 'worked on', 'work on'], a: [
+    { k: ['s.w.i.f.t', 'swift', 'school system', 'school management', 'enrollment'], a: [
+      "PROJECT-S.W.I.F.T? My files say: a Java console school management system — Toni's group project! Student records, enrollment flow, the works. Full code: github.com/GouuuM/PROJECT-S.W.I.F.T",
+      "S.W.I.F.T stands tall! Group-built Java console app for running a school system — records, enrollment, data handling. Peek at github.com/GouuuM/PROJECT-S.W.I.F.T",
+      "Ah, the S.W.I.F.T files! Java, console-based, school management — built with his relay team. github.com/GouuuM/PROJECT-S.W.I.F.T — go star it!"
+    ]},
+    { k: ['portfolio', 'website', 'this site', 'personal site', 'webportfolio'], a: [
+      "This very site! His Portfolio UI/UX — HTML, CSS, vanilla JS, themed dark/light modes, flip cards and all. Code: github.com/GouuuM/Webportfolio",
+      "The portfolio? That's this page! Hand-built with HTML/CSS/JS — responsive layout, dual themes, zero frameworks. github.com/GouuuM/Webportfolio",
+      "Portfolio UI/UX — Toni's personal site, built from scratch to practice semantic HTML and CSS systems. You're looking at it! Code at github.com/GouuuM/Webportfolio"
+    ]},
+    { k: ['project', 'work', 'built', 'what has he built', 'what has he done', 'what did he build', 'what did he make', 'made', 'created', 'done', 'showcase', 'worked on', 'work on'], a: [
       "Two races on record! PROJECT-S.W.I.F.T — Java console school management system, a group project, at github.com/GouuuM/PROJECT-S.W.I.F.T. And this portfolio site (HTML/CSS/JS) at github.com/GouuuM/Webportfolio. More laps on his GitHub: github.com/GouuuM",
       "His meet results: S.W.I.F.T, a Java school-system built with his relay team (github.com/GouuuM/PROJECT-S.W.I.F.T), plus this very portfolio (github.com/GouuuM/Webportfolio). Full record at github.com/GouuuM — go cheer him on!",
       "Project files, coming right up! A group-built Java console system for school management, and a themed portfolio with dark/light modes. Both linked on github.com/GouuuM — excellent times in both events!"
@@ -461,7 +434,22 @@
       "Oh, he's competitive alright! Emerald 1 in LoL, and he analyzed Worlds 2024 drafts like I analyze swim splits. Teamwork, pressure calls — same muscles, different pool!",
       "Medal count: Emerald 1 rank, earned through grind and review. Worlds 2024 follower for high-level teamwork study. A true relay anchor mentality!"
     ]},
-    { k: ['music', 'artist', 'taylor', 'swift', 'paramore', 'mcr', 'song', 'inspiration', 'hobby', 'interest', 'listen', 'favorite', 'favourite', 'playlist', 'band'], a: [
+    { k: ['taylor swift', 'taylor', 'swiftie', 'blank space', 'lover', '1989', 'midnights', 'reputation', 'folklore', 'ttpd', 'eras'], a: [
+      "Taylor Swift! The storyteller — Reputation, Folklore, Midnights eras keep Toni alive through late-night code. Flip her card on the site — dark shows the dark eras, light shows Lover!",
+      "Miss Swift? Toni's coding fuel — dramatic eras, sharp lyrics. Check her Inspiration card above!",
+      "Taylor! Storytelling queen — Folklore for focus, 1989 for celebration. The site's light mode is basically her Lover era!"
+    ]},
+    { k: ['paramore', 'hayley', 'misery business', 'riot', 'after laughter', 'still into you'], a: [
+      "Paramore! Hayley Williams and co. — pure adrenaline for long sessions. Misery Business mode: ON. Their card's on the site!",
+      "Paramore goes hard! Riot! energy pushes Toni through the toughest bugs. Dark mode is their era here!",
+      "P-More! High-octane rock for debugging marathons. Still Into You on repeat, allegedly!"
+    ]},
+    { k: ['mcr', 'my chemical romance', 'black parade', 'gerard', 'na na na', 'danger days'], a: [
+      "My Chemical Romance! Theatrical, dramatic — Welcome to the Black Parade energy when he's polishing designs. Their card flips too!",
+      "MCR! Danger Days drama for design days. Na Na Na on full blast, probably!",
+      "My Chem! Black Parade vibes that spark his creativity. Check their Inspiration card!"
+    ]},
+    { k: ['music', 'artist', 'song', 'inspiration', 'hobby', 'interest', 'listen', 'favorite', 'favourite', 'playlist', 'band'], a: [
       "His playlist is elite! Taylor Swift for storytelling, Paramore for full-sprint coding energy, MCR for dramatic design flair. Flip the Inspiration cards above — dark mode swims Paramore laps, light mode does Taylor laps!",
       "Warm-up music matters! Taylor's eras, Paramore's fire, MCR's theater — that's what fuels his late-night sessions. The card section even changes bands with the theme. Taste AND muscles!",
       "Off the blocks: Taylor Swift (lyrics!), Paramore (adrenaline!), MCR (drama!). Try flipping those cards — each theme plays its own anthem. No wonder his designs have rhythm!"
@@ -475,9 +463,10 @@
       "Home pool: the Philippines! He trains at Philippine Christian University.",
       "He's based in the Philippines, swimming out of PCU!"
     ]},
-    { k: ['year', 'old', 'age', '4th', 'fourth', 'student', 'grade', 'level', 'senior', 'how old is he'], a: [
-      "4th-year BSIT! Senior season — time to leave it all in the pool!",
-      "He's a 4th-year. The final lap before graduation!"
+    { k: ['year', 'old', 'age', '25', '4th', 'fourth', 'student', 'grade', 'level', 'senior', 'how old is he', 'years old'], a: [
+      "He's 25! A 4th-year BSIT student in his senior season!",
+      "25 years old — 4th-year, final lap before graduation!",
+      "Toni's 25! Old enough to know better, young enough for all-nighters!"
     ]},
     { k: ['resume', 'cv'], a: [
       "No downloadable resume on the site yet — but his GitHub (github.com/GouuuM) plus this portfolio are his race videos! Email him and he'll send one over, manager's promise!",
@@ -529,6 +518,29 @@
     const pool = best ? best.a : FALLBACKS;
     return pool[Math.floor(Math.random() * pool.length)];
   }
+  const chatHist = [];
+  const stripHtml = s => String(s).replace(/<[^>]*>/g, '');
+  const escapeHtml = s => String(s).replace(/[&<>"']/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+  const linkify = s => String(s)
+    .replace(/github\.com\/\S+/g, m => `<a href="https://${m}" target="_blank" rel="noopener">${m}</a>`)
+    .replace(/tres\.gutentag@gmail\.com/g, '<a href="mailto:tres.gutentag@gmail.com">tres.gutentag@gmail.com</a>');
+  async function remoteReply(q) {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), 12000);
+    try {
+      const r = await fetch('api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: q, history: chatHist.slice(-6) }),
+        signal: ctrl.signal,
+      });
+      clearTimeout(t);
+      if (!r.ok) return null;
+      const j = await r.json();
+      const out = typeof j.reply === 'string' ? j.reply.trim() : '';
+      return out || null;
+    } catch { clearTimeout(t); return null; }
+  }
   function answer(q) {
     // easter egg: same exact question 3x in a row → Gou calls you out (then still answers)
     const norm = q.toLowerCase().trim().replace(/\s+/g, ' ').replace(/[!?.]+$/g, '');
@@ -541,15 +553,19 @@
     msgs.appendChild(typing);
     msgs.scrollTop = msgs.scrollHeight;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    setTimeout(() => {
+    chatHist.push({ role: 'user', text: String(q).slice(0, 500) });
+    const finish = html => {
       typing.remove();
-      // linkify plain urls / emails
-      let a = botReply(q)
-        .replace(/github\.com\/\S+/g, m => `<a href="https://${m}" target="_blank" rel="noopener">${m}</a>`)
-        .replace(/tres\.gutentag@gmail\.com/g, '<a href="mailto:tres.gutentag@gmail.com">tres.gutentag@gmail.com</a>');
-      if (egged) a = EGGS[Math.floor(Math.random() * EGGS.length)];
-      addMsg(a, 'bot');
-    }, reduced ? 50 : 600);
+      addMsg(html, 'bot');
+      chatHist.push({ role: 'bot', text: stripHtml(html).slice(0, 500) });
+    };
+    (async () => {
+      if (!egged) {
+        const remote = await remoteReply(q); // live AI; null when offline/unconfigured
+        if (remote) { finish(linkify(escapeHtml(remote))); return; }
+      }
+      setTimeout(() => finish(linkify(egged ? EGGS[Math.floor(Math.random() * EGGS.length)] : botReply(q))), reduced ? 50 : 500);
+    })();
   }
   function openChat() {
     panel.hidden = false;
