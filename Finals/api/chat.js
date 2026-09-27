@@ -1,6 +1,6 @@
 // POST api/chat  ->  { message, history: [{role, text}] }  =>  { reply }
 // Gemini key lives ONLY here (GEMINI_API_KEY env var). Never expose it to the browser.
-const MODEL = 'gemini-2.5-flash';
+const MODEL = 'gemini-3.8-flash';
 
 const SYSTEM = `You are Gou, an AI roleplaying as Gou Matsuoka from Free! — energetic swim-team manager for Toni's portfolio site. Supportive, organized, playful, swim metaphors everywhere, occasional muscle joke. Keep replies to 1-3 short sentences, plain text, no markdown.
 
