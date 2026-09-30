@@ -9,9 +9,9 @@
   const themeBtn = document.getElementById('themeBtn');
   const root = document.documentElement;
   const frontMap = {
-    ts: ['images/Taylor-Swift-lightmode.jpg', 'images/Taylor-Swift-darkmode.jpg'],
-    pm: ['images/Paramore-lightmode.jpg', 'images/Paramore-darkmode.jpg'],
-    mcr: ['images/MCR-lightmode.jpg', 'images/MCR-darkmode.jpg']
+    ts: ['Lightmode & Darkmode/Taylor-Swift-lightmode.jpg', 'Lightmode & Darkmode/Taylor-Swift-darkmode.jpg'],
+    pm: ['Lightmode & Darkmode/Paramore-lightmode.jpg', 'Lightmode & Darkmode/Paramore-darkmode.jpg'],
+    mcr: ['Lightmode & Darkmode/MCR-lightmode.jpg', 'Lightmode & Darkmode/MCR-darkmode.jpg']
   };
   function applyTheme(mode) {
     const isLight = mode === 'light';
@@ -98,7 +98,7 @@
     void document.querySelector('.brand')?.offsetWidth;
     document.querySelector('.brand')?.classList.add('egg-hit');
     try {
-      const a = new Audio(encodeURI('audios/Easter egg.m4a'));
+      const a = new Audio(encodeURI('Easter eggs/Easter egg.m4a'));
       a.play().catch(() => {});
     } catch {}
   }
@@ -159,38 +159,38 @@
   const catalog = {
     ts: {
       dark: { audio: TS_DARK, albums: [
-        { src: 'images/TS-Reputation.jpg', title: 'Reputation' },
-        { src: 'images/TS-Folklore.jpg', title: 'Folklore' },
-        { src: 'images/TS-TTPD.jpg', title: 'The Tortured Poets Department' }
+        { src: 'Lightmode & Darkmode/TS-Reputation.jpg', title: 'Reputation' },
+        { src: 'Lightmode & Darkmode/TS-Folklore.jpg', title: 'Folklore' },
+        { src: 'Lightmode & Darkmode/TS-TTPD.jpg', title: 'The Tortured Poets Department' }
       ]},
       light: { audio: TS_LIGHT, albums: [
-        { src: 'images/TS-1989-(Taylor\'s-Version).jpg', title: "1989 (Taylor's Version)" },
-        { src: 'images/TS-Midnights.jpg', title: 'Midnights' },
-        { src: 'images/TS-Lover.jpg', title: 'Lover' }
+        { src: 'Lightmode & Darkmode/TS-1989-(Taylor\'s-Version).jpg', title: "1989 (Taylor's Version)" },
+        { src: 'Lightmode & Darkmode/TS-Midnights.jpg', title: 'Midnights' },
+        { src: 'Lightmode & Darkmode/TS-Lover.jpg', title: 'Lover' }
       ]}
     },
     pm: {
       dark: { audio: PM_DARK, albums: [
-        { src: 'images/PM-Riot!.jpg', title: 'Riot!' },
-        { src: 'images/PM-Brand-New-Eyes.jpg', title: 'Brand New Eyes' },
-        { src: 'images/PM-All-We-Know-Is-Falling.jpg', title: 'All We Know Is Falling' }
+        { src: 'Lightmode & Darkmode/PM-Riot!.jpg', title: 'Riot!' },
+        { src: 'Lightmode & Darkmode/PM-Brand-New-Eyes.jpg', title: 'Brand New Eyes' },
+        { src: 'Lightmode & Darkmode/PM-All-We-Know-Is-Falling.jpg', title: 'All We Know Is Falling' }
       ]},
       light: { audio: PM_LIGHT, albums: [
-        { src: 'images/PM-Paramore.jpg', title: 'Paramore' },
-        { src: 'images/PM-After-Laughter.jpg', title: 'After Laughter' },
-        { src: 'images/PM-This-Is-Why.jpg', title: 'This Is Why' }
+        { src: 'Lightmode & Darkmode/PM-Paramore.jpg', title: 'Paramore' },
+        { src: 'Lightmode & Darkmode/PM-After-Laughter.jpg', title: 'After Laughter' },
+        { src: 'Lightmode & Darkmode/PM-This-Is-Why.jpg', title: 'This Is Why' }
       ]}
     },
     mcr: {
       dark: { audio: MCR_DARK, albums: [
-        { src: 'images/MCR-The-Black-Parade.jpg', title: 'The Black Parade' },
-        { src: 'images/MCR-Three-Cheers-For-Sweet-Revenge.jpg', title: 'Three Cheers for Sweet Revenge' },
-        { src: 'images/MCR-I-Brought-You-My-Bullets.jpg', title: 'I Brought You My Bullets' }
+        { src: 'Lightmode & Darkmode/MCR-The-Black-Parade.jpg', title: 'The Black Parade' },
+        { src: 'Lightmode & Darkmode/MCR-Three-Cheers-For-Sweet-Revenge.jpg', title: 'Three Cheers for Sweet Revenge' },
+        { src: 'Lightmode & Darkmode/MCR-I-Brought-You-My-Bullets.jpg', title: 'I Brought You My Bullets' }
       ]},
       light: { audio: MCR_LIGHT, albums: [
-        { src: 'images/MCR-Danger-Days.jpg', title: 'Danger Days' },
-        { src: 'images/MCR-Conventional-Weapons.jpg', title: 'Conventional Weapons' },
-        { src: 'images/MCR-May-Death-Never-Stop-You.jpg', title: 'May Death Never Stop You' }
+        { src: 'Lightmode & Darkmode/MCR-Danger-Days.jpg', title: 'Danger Days' },
+        { src: 'Lightmode & Darkmode/MCR-Conventional-Weapons.jpg', title: 'Conventional Weapons' },
+        { src: 'Lightmode & Darkmode/MCR-May-Death-Never-Stop-You.jpg', title: 'May Death Never Stop You' }
       ]}
     }
   };
@@ -405,7 +405,9 @@
   // slightly teasing, swimming metaphors everywhere, and yes — she notices muscles.
   // Every rule has multiple replies so Gou never sounds like a robot.
   // short words (hi, yo, ty…) match on word boundaries so "which" doesn't trigger "hi"
+  // symbol keys (c#, .net…) match literally since \b doesn't work around symbols
   function hit(s, k) {
+    if (/[^a-z0-9]/.test(k)) return s.includes(k);
     if (k.length <= 3) {
       try { return new RegExp('\\b' + k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b').test(s); }
       catch { return s.includes(k); }
@@ -428,15 +430,40 @@
       "Toni's my star swimmer — er, developer! 4th-year BSIT at PCU, building clean, accessible websites. I've got his whole training log memorized, ask away!",
       "Toni Rose Susa, 4th-year BSIT, future web & software dev! Great form, great discipline — I manage his portfolio like a relay team!"
     ]},
-    { k: ['skill', 'tech', 'stack', 'tools', 'language', 'frontend', 'backend', 'design', 'what can he do', 'what does he know', 'what does he do', 'experience', 'experienced', 'expert', 'good at', 'abilities', 'capable', 'knowledge', 'coding', 'programming', 'develop'], a: [
-      "Let me check my clipboard! Designer: Canva, Figma, Photoshop, Premiere Pro. Frontend: HTML, CSS, JavaScript, Sass + Tailwind, Bootstrap. Backend: Java, PHP, Python, SQL + Eclipse, NetBeans, SSMS, SQLite. Those tech muscles are RIPPED!",
-      "His training menu: design (Canva, Figma, Photoshop, Premiere), frontend (HTML, CSS, JS, Sass, Tailwind, Bootstrap), backend (Java, PHP, Python, SQL). Beautiful stroke on every lap!",
-      "Skills? Oh, I've drilled him well! Interfaces and websites with Canva/Figma, interactive frontends in HTML/CSS/JS, plus Java/PHP/Python/SQL on the backend. Fantastic muscle definition!"
+    { k: ['designer', 'design tools', 'canva', 'figma', 'photoshop', 'premiere pro', 'interfaces', 'websites design', 'media layouts', 'social graphics', 'figma design', 'figma tool'], a: [
+      "Designer lane! Toni does interfaces, websites, media layouts and social graphics — armed with Canva, Figma, Photoshop and Premiere Pro. Clean, clear, creative!",
+      "Design files? Canva for speed, Figma for UI (see his TravelEase mobile booking prototype in Projects!), Photoshop + Premiere for media. Beautiful form!",
+      "His designer stroke: clarity + creativity! Interfaces and social graphics in Canva/Figma, polished media in Photoshop/Premiere. Check the Skills section!"
+    ]},
+    { k: ['frontend', 'front-end', 'html', 'css', 'javascript', 'sass', 'tailwind', 'bootstrap', 'responsive', 'vs code'], a: [
+      "Frontend freestyle! HTML, CSS, JavaScript, Sass — plus Tailwind and Bootstrap, built in VS Code. This very portfolio is the proof: responsive, themed dark/light, zero frameworks!",
+      "Frontend muscles? RIPPED! Semantic HTML, CSS systems, vanilla JS, Sass, Tailwind, Bootstrap. Flip the Inspiration cards — all hand-built interactivity!",
+      "His frontend event: responsive layouts, smooth interactions, maintainable code. HTML/CSS/JS + Sass/Tailwind/Bootstrap. See this site + the Skills section!"
+    ]},
+    { k: ['backend', 'back-end', 'java', 'c#', 'csharp', '.net', 'php', 'python', 'sql', 'eclipse', 'netbeans', 'ssms', 'sqlite', 'server', 'database'], a: [
+      "Backend breaststroke! Java, C#, PHP, Python, SQL — with Eclipse, NetBeans, SSMS and SQLite. That's what powers S.W.I.F.T (Java) and ByteLodge (C#/.NET + SQL)!",
+      "Server-side stamina! Java + C# + PHP + Python with SQL databases — console systems, booking logic, enrollment flows. See PROJECT-S.W.I.F.T and ByteLodge in Projects!",
+      "His backend lap: solid logic + databases! Java, C#, PHP, Python, SQL across Eclipse/NetBeans/SSMS/SQLite. Group-built systems, real data handling!"
+    ]},
+    { k: ['skill', 'tech', 'stack', 'tools', 'language', 'what can he do', 'what does he know', 'what does he do', 'experience', 'experienced', 'expert', 'good at', 'abilities', 'capable', 'knowledge', 'coding', 'programming', 'develop'], a: [
+      "Let me check my clipboard! Designer: Canva, Figma, Photoshop, Premiere Pro. Frontend: HTML, CSS, JavaScript, Sass + Tailwind, Bootstrap. Backend: Java, C#, PHP, Python, SQL + Eclipse, NetBeans, SSMS, SQLite. Those tech muscles are RIPPED!",
+      "His training menu: design (Canva, Figma, Photoshop, Premiere), frontend (HTML, CSS, JS, Sass, Tailwind, Bootstrap), backend (Java, C#, PHP, Python, SQL). Beautiful stroke on every lap!",
+      "Skills? Oh, I've drilled him well! Interfaces and websites with Canva/Figma, interactive frontends in HTML/CSS/JS, plus Java/C#/PHP/Python/SQL on the backend. Fantastic muscle definition!"
     ]},
     { k: ['s.w.i.f.t', 'swift', 'school system', 'school management', 'enrollment'], a: [
       "PROJECT-S.W.I.F.T? My files say: a Java console school management system — Toni's group project! Student records, enrollment flow, the works. Full code: github.com/GouuuM/PROJECT-S.W.I.F.T",
       "S.W.I.F.T stands tall! Group-built Java console app for running a school system — records, enrollment, data handling. Peek at github.com/GouuuM/PROJECT-S.W.I.F.T",
       "Ah, the S.W.I.F.T files! Java, console-based, school management — built with his relay team. github.com/GouuuM/PROJECT-S.W.I.F.T — go star it!"
+    ]},
+    { k: ['byte', 'bytelodge', 'hotel', 'reservation', 'hotel-reservation', 'joseherga'], a: [
+      "ByteLodge? That's his group project C# hotel reservation system — room booking flow, availability checks, reservation management with the team! Code: github.com/joseherga/Hotel-Reservation",
+      "Hotel project on record! ByteLodge, group-built in C#/.NET with SQL — booking, validation, data handling. Peek at github.com/joseherga/Hotel-Reservation",
+      "ByteLodge files! C#, .NET, SQL — rooms, availability, reservations, all validated with his relay team. github.com/joseherga/Hotel-Reservation — go star it!"
+    ]},
+    { k: ['travelease', 'travel', 'mobile booking', 'hci', 'booking system', 'prototype', 'figma file'], a: [
+      "TravelEase? His group project mobile booking UI in Figma — HCI final with the team! Search + booking flow with clean mobile layouts. Design file on Figma — link in the Projects section!",
+      "The Figma one! TravelEase mobile booking prototype, group-built — search, book, prototype interactions. Open the Figma link from Projects to click through it!",
+      "TravelEase heat! Figma-designed mobile booking system — search screens, booking flow, polished mobile UI for the HCI final. Link's in Projects, dive in!"
     ]},
     { k: ['portfolio', 'website', 'this site', 'personal site', 'webportfolio'], a: [
       "This very site! His Portfolio UI/UX — HTML, CSS, vanilla JS, themed dark/light modes, flip cards and all. Code: github.com/GouuuM/Webportfolio",
@@ -444,19 +471,39 @@
       "Portfolio UI/UX — Toni's personal site, built from scratch to practice semantic HTML and CSS systems. You're looking at it! Code at github.com/GouuuM/Webportfolio"
     ]},
     { k: ['project', 'work', 'built', 'what has he built', 'what has he done', 'what did he build', 'what did he make', 'made', 'created', 'done', 'showcase', 'worked on', 'work on'], a: [
-      "Two races on record! PROJECT-S.W.I.F.T — Java console school management system, a group project, at github.com/GouuuM/PROJECT-S.W.I.F.T. And this portfolio site (HTML/CSS/JS) at github.com/GouuuM/Webportfolio. More laps on his GitHub: github.com/GouuuM",
-      "His meet results: S.W.I.F.T, a Java school-system built with his relay team (github.com/GouuuM/PROJECT-S.W.I.F.T), plus this very portfolio (github.com/GouuuM/Webportfolio). Full record at github.com/GouuuM — go cheer him on!",
-      "Project files, coming right up! A group-built Java console system for school management, and a themed portfolio with dark/light modes. Both linked on github.com/GouuuM — excellent times in both events!"
+      "Four races on record! PROJECT-S.W.I.F.T — Java school management (github.com/GouuuM/PROJECT-S.W.I.F.T). This portfolio (github.com/GouuuM/Webportfolio). ByteLodge C# hotel reservation (github.com/joseherga/Hotel-Reservation). Plus TravelEase mobile booking UI in Figma — link in Projects!",
+      "His meet results: S.W.I.F.T (Java school system), this portfolio site, ByteLodge hotel system in C#, and TravelEase Figma mobile booking prototype. Check the Projects section — go cheer him on!",
+      "Project files, coming right up! Java school system, themed portfolio, C# hotel reservation, and a Figma mobile booking UI. All linked in Projects — excellent times in every event!"
     ]},
     { k: ['education', 'school', 'study', 'degree', 'pcu', 'university', 'college', 'mmmhs', 'high school', 'course', 'where does he study', 'where did he study', 'what did he study', 'major', 'studying', 'graduate', 'schooling', 'academic'], a: [
       "His training history! BSIT at Philippine Christian University (2023–Present): Software Development, Database Systems, Web Programming. Before that, ICT Strand at Mariano Marcos Memorial High School (2017–2019) — that's where the HTML spark caught fire!",
       "School records! Currently 4th-year BSIT at PCU — software dev, databases, web programming. He started in the ICT Strand at MMMHS learning HTML basics. From kickboard to freestyle!",
       "Education lap by lap: PCU, BSIT 2023 to now, all the big strokes — dev, databases, web programming. Foundation built at Mariano Marcos Memorial High School's ICT Strand. Textbook progression!"
     ]},
-    { k: ['achievement', 'award', 'emerald', 'league', 'worlds', 'gaming', 'rank', 'accomplishment', 'compete', 'competition', 'gamer', 'proud of'], a: [
-      "Competition results! Emerald 1 in League of Legends — top-tier solo queue! Plus he studied Worlds 2024 like game tape. All that strategy and perseverance? Straight from the athlete's playbook!",
-      "Oh, he's competitive alright! Emerald 1 in LoL, and he analyzed Worlds 2024 drafts like I analyze swim splits. Teamwork, pressure calls — same muscles, different pool!",
-      "Medal count: Emerald 1 rank, earned through grind and review. Worlds 2024 follower for high-level teamwork study. A true relay anchor mentality!"
+    { k: ['recognition', 'oop', 'object oriented', 'object-oriented', 'coi', 'informatics'], a: [
+      "That OOP Recognition? Awarded for Object Oriented Programming — Second Term A.Y. 2025–2026, College of Informatics, PCU — given April 30, 2025! Framed in the Certificates section!",
+      "OOP honors! Excellence in Object Oriented Programming at COI-PCU. Proof his class-and-object muscles are competition-ready!",
+      "The Recognition cert = OOP mastery! Second Term, COI, PCU. Check it in Certificates & Milestones!"
+    ]},
+    { k: ['jpcs', 'jcps', 'junior philippine computer society', 'membership', 'member'], a: [
+      "JPCS-PCU? Toni's a bona fide Junior Philippine Computer Society National member via the recognized PCU chapter — full benefits for A.Y. 2024–2025! Cert's in the Certificates section!",
+      "Membership files! JPCS National through JPCS-PCU, a recognized Philippine Computer Society chapter. Official member perks, A.Y. 2024–2025!",
+      "The JPCS cert proves it — enrolled at PCU + card-carrying JPCS member. Team player, certified!"
+    ]},
+    { k: ['emerald', 'league', 'league of legends', '65 lp', 'rank', 'lol'], a: [
+      "Emerald 1 at 65 LP! Ground out through reviewed games — KDA tracking, VOD review after losses, team shot-calling. Same loop he brings to code!",
+      "LoL files! Emerald 1, 65 LP — earned, not given! Review, iterate, climb — athlete mentality, developer discipline!",
+      "65 LP of pure grind! Emerald 1 via measure-review-iterate. Manager-approved perseverance!"
+    ]},
+    { k: ['worlds', 'fifth trophy', 'faker', 't1', 'esports'], a: [
+      "Worlds 2024 — The Fifth Trophy Is for You! Faker lifted T1's fifth and dedicated it to the fans. Toni's reminder that perseverance pays off — video's in Certificates & Milestones!",
+      "Faker files! A decade of near-misses turned legend at Worlds 2024. Toni studies that teamwork like I study swim splits!",
+      "The fifth trophy moment! T1, Faker, the fans — pure perseverance fuel. Watch the clip in his Certificates section!"
+    ]},
+    { k: ['certificate', 'certificates', 'certification', 'milestone', 'milestones', 'achievement', 'award', 'accomplishment', 'gaming', 'gamer', 'compete', 'competition', 'proud of'], a: [
+      "Certificates & Milestones! OOP Recognition (COI-PCU, April 2025) + JPCS-PCU bona fide membership (A.Y. 2024–2025) — plus Emerald 1 at 65 LP and Worlds 2024 study like game tape!",
+      "Medal count: two certificates on display, Emerald 1 rank earned through grind and review, Worlds 2024 teamwork study. A true relay anchor mentality!",
+      "Check the Certificates section! Recognition + JPCS certs up top, then Emerald 1 and Worlds 2024 esports milestones. Strategy, teamwork, perseverance!"
     ]},
     { k: ['taylor swift', 'taylor', 'swiftie', 'blank space', 'lover', '1989', 'midnights', 'reputation', 'folklore', 'ttpd', 'eras'], a: [
       "Taylor Swift! The storyteller — Reputation, Folklore, Midnights eras keep Toni alive through late-night code. Flip her card on the site — dark shows the dark eras, light shows Lover!",
@@ -511,7 +558,7 @@
       "Ja ne! Good luck — Toni's waiting for your message!"
     ]},
     { k: ['help', 'what can you', 'options', 'what can i ask', 'what do you know'], a: [
-      "Here's my clipboard: try Skills? / Projects? / Education? / Contact? — or ask about music, achievements, internships. I know EVERYTHING about my swimmer!",
+      "Here's my clipboard: try Skills? / Projects? / Education? / Contact? — or ask about music, certificates, internships. I know EVERYTHING about my swimmer!",
       "I can dish on his skills, projects, school, gaming, music taste, and contact info. Pick an event!"
     ]}
   ];

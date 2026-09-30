@@ -39,7 +39,7 @@ img,video{max-width:100%;display:block;border-radius:10px}
 
 /* NAV */
 .navbar{position:sticky;top:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 1.25rem;background:color-mix(in srgb,var(--bg-panel) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.brand{font-family:'Old English','Rye',serif;font-weight:400;font-size:1.7rem;text-decoration:none;letter-spacing:2px}
+.brand{font-family:'Old English','Rye',serif;font-weight:400;font-size:1.35rem;text-decoration:none;letter-spacing:1.5px}
 @font-face{font-family:'Old English';src:url('fonts/OldEnglishFive.ttf') format('truetype');font-display:swap}
 /* hero name fonts */
 @font-face{font-family:'Paramore';src:url('fonts/ParamoreAlbum.ttf') format('truetype');font-display:swap}
