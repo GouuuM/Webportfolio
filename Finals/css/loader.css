@@ -1,0 +1,12 @@
+/* LOADER — zine record-shelf intro, lifts on window load */
+#loader{position:fixed;inset:0;z-index:2500;background:var(--bg);background-image:radial-gradient(rgba(255,255,255,.05) 1px,transparent 1px);background-size:22px 22px;display:flex;flex-direction:column;gap:.9rem;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s}
+#loader.lifted{opacity:0;visibility:hidden;pointer-events:none}
+.loader-tag{font-family:var(--font-accent);font-size:.72rem;letter-spacing:3px;color:var(--muted);margin:0}
+/* TRS in Old English, Riot red burning into Lover pink */
+.loader-brand{font-family:'Old English','Rye',serif;font-size:clamp(3.4rem,11vw,5.4rem);letter-spacing:5px;margin:0;background:linear-gradient(100deg,var(--accent) 20%,var(--pink) 85%);-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:4px 4px 0 rgba(0,0,0,.6)}
+.loader-brand span{-webkit-text-fill-color:var(--pink)}
+.loader-bar{width:min(230px,60vw);height:10px;border:2px solid var(--pink);border-radius:99px;overflow:hidden;background:rgba(0,0,0,.5);box-shadow:3px 3px 0 #000}
+.loader-fill{height:100%;width:5%;border-radius:99px;background:linear-gradient(90deg,var(--accent-deep),var(--accent),var(--pink));animation:loaderFill 2.2s ease-out forwards}
+@keyframes loaderFill{from{width:5%}to{width:100%}}
+.loader-stamp{width:fit-content;margin:0;background:var(--pink);color:#160a12;padding:.15rem .9rem;rotate:-2deg;font-family:var(--font-accent);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;box-shadow:3px 3px 0 rgba(0,0,0,.55);animation:loaderBlink 1.4s ease-in-out infinite}
+@keyframes loaderBlink{0%,100%{opacity:.65}50%{opacity:1}}
