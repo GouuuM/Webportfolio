@@ -11,4 +11,4 @@
   /* zine tilts off on small screens so nothing overflows */
   .grid-3>.card,.grid-2>.card,.artist-grid>.artist,.hero-badge,.eyebrow,.years{rotate:none}
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.fade-section,.fade-up{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.fade-section,.fade-up{opacity:1;transform:none}#loader{display:none!important}}
