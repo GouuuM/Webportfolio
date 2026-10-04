@@ -1,0 +1,35 @@
+/* ARTISTS */
+.artist-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;align-items:stretch}
+.artist-grid>.artist:nth-child(odd){rotate:-1deg}
+.artist-grid>.artist:nth-child(even){rotate:1deg}
+.flip-front p{margin:0;font-size:.95rem}
+/* hand-numbered catalog tags, like a zine record shelf */
+.flip-front::before{font-family:var(--font-accent);font-size:.75rem;letter-spacing:2px;color:var(--muted);opacity:.8;align-self:flex-start;rotate:-3deg}
+.artist-grid>.artist:nth-child(1) .flip-front::before{content:'01 ● SIDE A'}
+.artist-grid>.artist:nth-child(2) .flip-front::before{content:'02 ● SIDE A'}
+.artist-grid>.artist:nth-child(3) .flip-front::before{content:'03 ● SIDE B'}
+/* each record gets its own faint sleeve tint */
+.artist[data-artist="ts"] .flip-front{background:linear-gradient(180deg,color-mix(in srgb,var(--pink) 9%,var(--bg-panel)),var(--bg-panel) 60%)}
+.artist[data-artist="pm"] .flip-front{background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 10%,var(--bg-panel)),var(--bg-panel) 60%)}
+.flip{perspective:1200px;height:400px}
+.flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,.1,.2,1);will-change:transform}
+.flip.flipped .flip-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;text-align:center;gap:.45rem;overflow:hidden;padding:1.2rem}
+.flip-front{cursor:pointer;transform:none}
+.flip-front:hover{transform:none}
+.flip-back{transform:rotateY(180deg);justify-content:center;cursor:default}
+.flip-back:hover{transform:rotateY(180deg)}
+.flip:not(.flipped) .flip-back{pointer-events:none}
+.flip.flipped .flip-front{pointer-events:none}
+.artist-img{width:128px;height:128px;object-fit:cover;border-radius:50%;flex-shrink:0}
+.album-cover{width:128px;height:128px;object-fit:cover;flex-shrink:0;border:6px solid #f5f0e8;border-radius:2px;box-shadow:3px 3px 0 rgba(0,0,0,.5)}
+.flip-hint{font-size:.82rem;color:var(--muted);border:1px dashed var(--border);padding:.35rem .9rem;border-radius:999px;background:transparent;cursor:pointer;font:inherit}
+.flip-hint:hover{border-color:var(--accent);color:var(--accent)}
+.flip-front .flip-hint{margin-top:auto}
+.flip-back .flip-hint{margin-top:.6rem}
+.album-nav{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-top:.6rem;position:relative;z-index:2}
+/* merged theme: each artist keeps its identity in the one dark grid */
+.artist[data-artist="ts"] h3{font-family:'Taylor Swift','Playfair Display',serif;font-weight:400;letter-spacing:1px;color:var(--pink)}
+.artist[data-artist="pm"] h3{font-family:'Paramore','Anton',sans-serif;font-weight:400;letter-spacing:2px;color:var(--accent)}
+.artist[data-artist="mcr"] h3{font-family:'MyChemicalRomance','Anton',sans-serif;font-weight:400;font-size:1.35rem;letter-spacing:2px}
+

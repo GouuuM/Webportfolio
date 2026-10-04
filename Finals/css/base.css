@@ -1,0 +1,29 @@
+:root{
+  /* PARAMORE x TAYLOR SWIFT — riot red + lover pink on black */
+  --bg:#0a090c; --bg-soft:#151015; --bg-panel:#1c151f;
+  --text:#f3e8ea; --muted:#bfa9ae;
+  --accent:#f0324d; --accent-deep:#b3122f; --gold:#f5b301;
+  --pink:#e88ac8; --pink-deep:#b34a8e;
+  --border:#332227; --card-shadow:0 8px 30px rgba(0,0,0,.5);
+  --radius:14px; --max:1100px; --nav-h:64px;
+  /* DARK fonts: Anton (punk headlines) / Inter (body) / Space Mono (zine labels) */
+  --font-display:'Anton',sans-serif;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-accent:'Space Mono',monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 16px)}
+body{margin:0;background:var(--bg);background-image:radial-gradient(rgba(255,255,255,.045) 1px,transparent 1px);background-size:22px 22px;color:var(--text);font-family:var(--font-body);line-height:1.6;transition:background .3s,color .3s}
+h1,h2,h3{font-family:var(--font-display);line-height:1.15;margin:0 0 .6rem;letter-spacing:.5px}
+h4{font-family:var(--font-body);line-height:1.2;margin:0 0 .6rem}
+p{margin:0 0 1rem;color:var(--muted)}
+a{color:inherit}
+img,video{max-width:100%;display:block;border-radius:10px}
+:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--accent);color:#fff;padding:.6rem 1rem;z-index:2000;border-radius:0 0 8px 0}
+.skip-link:focus{left:0}
+.container{max-width:var(--max);margin:0 auto;padding:0 1.25rem}
+.container.narrow{max-width:760px}
+.text-center{text-align:center}
+.muted{color:var(--muted)}
+

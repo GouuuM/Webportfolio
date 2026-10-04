@@ -1,0 +1,11 @@
+/* BUTTONS — sticker style: thick border, hard offset shadow, physical press */
+.btn{display:inline-flex;align-items:center;gap:.5rem;text-decoration:none;border-radius:10px;padding:.7rem 1.2rem;font-weight:600;border:2px solid #000;box-shadow:4px 4px 0 #000;cursor:pointer;font-size:.95rem;transition:transform .12s ease,box-shadow .12s ease,background .2s,border-color .2s,color .2s}
+.btn-primary{background:linear-gradient(100deg,var(--accent-deep),var(--pink-deep));color:#fff}
+.btn-primary:hover{background:linear-gradient(100deg,var(--accent),var(--pink))}
+.btn-ghost{border-color:var(--pink);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--pink);color:var(--pink);box-shadow:4px 4px 0 color-mix(in srgb,var(--pink) 45%,transparent)}
+.btn-small{padding:.5rem .9rem;font-size:.88rem}
+.btn:active{transform:translate(3px,3px);box-shadow:1px 1px 0 #000}
+.icon-btn{transition:transform .2s,border-color .2s,color .2s}
+.icon-btn:active{transform:scale(.88) rotate(25deg)}
+

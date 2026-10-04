@@ -1,0 +1,8 @@
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:1rem;position:relative;padding-left:1.2rem;border-left:2px dashed var(--pink)}
+.timeline-item{position:relative}
+.timeline-dot{position:absolute;left:-1.65rem;top:1.6rem;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 20%,transparent)}
+.years{display:inline-block;background:var(--pink);color:#160a12;font-size:.82rem;font-weight:700;padding:.1rem .6rem;border-radius:4px;rotate:-1deg}
+.timeline h3 a{color:var(--text);text-decoration:none}
+.timeline h3 a:hover{color:var(--accent)}
+

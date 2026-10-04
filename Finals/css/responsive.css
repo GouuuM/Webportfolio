@@ -1,0 +1,14 @@
+/* RESPONSIVE */
+@media(max-width:900px){.grid-3,.artist-grid{grid-template-columns:1fr 1fr}.grid-2{grid-template-columns:1fr}}
+@media(max-width:768px){
+  .menu-only{display:inline-flex}
+  .nav-menu{position:absolute;top:var(--nav-h);left:0;right:0;background:var(--bg-panel);flex-direction:column;align-items:stretch;padding:.8rem 1.2rem 1.2rem;border-bottom:1px solid var(--border);display:none}
+  .nav-menu.open{display:flex}
+  .nav-link{padding:.6rem 0;border-bottom:1px solid var(--border)}
+  .grid-3,.artist-grid{grid-template-columns:1fr}
+  .flip{height:420px}
+  .section{padding:3.5rem 0}
+  /* zine tilts off on small screens so nothing overflows */
+  .grid-3>.card,.grid-2>.card,.artist-grid>.artist,.hero-badge,.eyebrow,.years{rotate:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}.fade-section,.fade-up{opacity:1;transform:none}}
