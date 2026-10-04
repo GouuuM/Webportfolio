@@ -1,0 +1,10 @@
+/* CONTACT */
+.contact-cta{margin:1.2rem 0 1.8rem}
+.socials{display:flex;gap:1rem;justify-content:center;font-size:1.6rem;margin-bottom:2rem}
+.socials a{color:var(--muted);border:2px solid var(--border);border-radius:12px;width:52px;height:52px;display:inline-flex;align-items:center;justify-content:center;background:var(--bg-panel);box-shadow:3px 3px 0 rgba(0,0,0,.55)}
+.socials a:hover{color:var(--pink);border-color:var(--pink);transform:translateY(-2px)}
+.contact-form{display:flex;flex-direction:column;gap:.9rem;text-align:left}
+.contact-form label{display:flex;flex-direction:column;gap:.4rem;font-weight:600;font-size:.9rem}
+.contact-form input,.contact-form textarea{background:var(--bg-soft);border:1px solid var(--border);border-radius:10px;padding:.7rem .9rem;color:var(--text);font:inherit}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent);outline:none}
+
