@@ -1,0 +1,23 @@
+/* SECTIONS */
+.section{padding:5rem 0}
+.eyebrow{width:fit-content;margin:0 auto .9rem;background:var(--pink);color:#160a12;padding:.2rem 1rem;rotate:-1.5deg;font-family:var(--font-accent);font-size:1.05rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;box-shadow:3px 3px 0 rgba(0,0,0,.55)}
+/* alternate sections get the Riot-red stamp instead */
+main>section:nth-of-type(even) .eyebrow{background:var(--accent);color:#fff;rotate:1.5deg}
+.section-title{font-size:clamp(1.7rem,3vw,2.3rem);text-align:center;margin-bottom:.4rem;color:var(--text);text-decoration:underline wavy var(--pink) 3px;text-underline-offset:10px;padding-bottom:.5rem;text-shadow:2px 2px 0 var(--accent-deep)}
+.section-sub{text-align:center;max-width:600px;margin:0 auto 2.5rem}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem}
+.card{background:var(--bg-panel);border:2px solid var(--border);border-radius:var(--radius);padding:1.6rem;box-shadow:5px 5px 0 rgba(0,0,0,.55);transition:transform .25s,box-shadow .25s}
+.card:hover:not(.flip-front):not(.flip-back){transform:translateY(-4px)}
+/* pasted-up zine tilt (rotate-property, so it never fights the scroll-reveal transform) */
+.grid-3>.card:nth-child(odd),.grid-2>.card:nth-child(odd){rotate:-.7deg}
+.grid-3>.card:nth-child(even),.grid-2>.card:nth-child(even){rotate:.7deg}
+.card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--accent) 15%,transparent);color:var(--accent);font-size:1.3rem;margin-bottom:.8rem}
+/* middle card runs pink — Taylor to Paramore's red */
+.card:nth-child(2) .card-icon{background:color-mix(in srgb,var(--pink) 18%,transparent);color:var(--pink)}
+.card h3{font-family:var(--font-display)}
+.card h4{font-family:Inter,sans-serif;font-size:.85rem;text-transform:uppercase;letter-spacing:1px;margin:1rem 0 .5rem;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:.4rem}
+.tags span{font-size:.82rem;border:1px solid var(--border);padding:.25rem .65rem;border-radius:999px;background:var(--bg-soft)}
+.tags.muted span{opacity:.85}
+

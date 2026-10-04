@@ -1,0 +1,10 @@
+/* MINI PLAYER — Paramore-store shape, Riot x Lover dressed: pink frame, red→pink fill */
+#storePlayer{position:fixed;top:calc(var(--nav-h) + 12px);right:1.2rem;z-index:1200;display:flex;width:230px;border:2px solid var(--pink);background:#1c1518;box-shadow:4px 4px 0 #000;overflow:hidden}
+#storeProgressFill{position:absolute;left:0;top:0;height:100%;width:0%;background:linear-gradient(100deg,var(--accent-deep),var(--pink-deep));pointer-events:none;transition:width .2s linear}
+#storeMuteBtn{position:relative;z-index:1;flex:1.4;background:transparent;color:#fff;border:0;font-size:1.35rem;cursor:pointer;padding:.45rem .6rem;display:flex;align-items:center;justify-content:flex-start}
+#storeMuteBtn:hover{color:var(--pink)}
+#storeTimeBtn{position:relative;z-index:1;flex:1;background:transparent;color:#fff;border:0;font-family:'Share Tech Mono',monospace;font-size:1.25rem;letter-spacing:3px;padding:.45rem .4rem;cursor:pointer;font-variant-numeric:tabular-nums;min-width:110px}
+@media(max-width:768px){
+  #storePlayer{width:180px;top:auto;bottom:1.2rem;left:1.2rem;right:auto}
+  #storeTimeBtn{font-size:1.05rem;letter-spacing:2px;min-width:92px}
+}

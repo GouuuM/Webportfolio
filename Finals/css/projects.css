@@ -1,0 +1,11 @@
+/* PROJECTS */
+.project-card{background:var(--bg-panel);border:2px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;box-shadow:5px 5px 0 rgba(0,0,0,.55)}
+.project-media{display:block;overflow:hidden;position:relative}
+/* washi tape strip across the preview */
+.project-media::before{content:'';position:absolute;top:-8px;left:50%;translate:-50% 0;rotate:-4deg;width:110px;height:26px;background:color-mix(in srgb,var(--pink) 75%,transparent);opacity:.9;z-index:2;box-shadow:0 2px 6px rgba(0,0,0,.4)}
+.project-media img{width:100%;height:220px;object-fit:cover;border-radius:0;transition:transform .4s}
+.project-card:hover .project-media img{transform:scale(1.03)}
+.project-body{padding:1.4rem}
+.project-body h3{margin-bottom:.5rem}
+.project-links{margin-top:1rem;display:flex;gap:.6rem}
+
