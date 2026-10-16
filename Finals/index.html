@@ -15,6 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Playfair+Display:wght@600;700&family=Quicksand:wght@400;500;600&family=Great+Vibes&family=Cinzel+Decorative:wght@700;900&family=Share+Tech+Mono&family=Rye&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
   <!-- Styles: one file per section, in cascade order (replaces old style.css) -->
+  <link rel="stylesheet" href="css/loader.css" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/home.css" />
@@ -33,6 +34,14 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- LOADER — TRS intro, lifts on load -->
+  <div id="loader" aria-hidden="true">
+    <p class="loader-tag">TRS-001 ● SIDE A</p>
+    <p class="loader-brand">TRS<span>.</span></p>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+    <p class="loader-stamp">Dropping the needle…</p>
+  </div>
 
   <header class="navbar" id="top">
     <a href="#home" class="brand" aria-label="Home">TRS<span>.</span></a>
@@ -383,6 +392,7 @@
   </section>
 
   <!-- Scripts: one file per module, in load order (replaces old script.js) -->
+  <script src="js/loader.js" defer></script>
   <script src="js/year.js" defer></script>
   <script src="js/navbar.js" defer></script>
   <script src="js/scroll.js" defer></script>

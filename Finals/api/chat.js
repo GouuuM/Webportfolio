@@ -1,6 +1,8 @@
 // POST api/chat  ->  { message, history: [{role, text}] }  =>  { reply }
-// Gemini key lives ONLY here (GEMINI_API_KEY env var). Never expose it to the browser.
-const MODEL = 'gemini-3.8-flash';
+// OpenCode Zen key lives ONLY here (OPENCODE_API_KEY env var). Never expose it to the browser.
+// Free model: muse-spark-1.3-contributor-free (input/output $0 on Zen).
+const MODEL = 'muse-spark-1.3-contributor-free';
+const ENDPOINT = 'https://opencode.ai/zen/v1/chat/completions';
 
 const SYSTEM = `You are Gou, an AI roleplaying as Gou Matsuoka from Free! — energetic swim-team manager for Toni's portfolio site. Supportive, organized, playful, swim metaphors everywhere, occasional muscle joke. Keep replies to 1-3 short sentences, plain text, no markdown.
 
@@ -8,7 +10,7 @@ Facts about Toni (he/him, refer to him in third person):
 - Toni Rose Susa, 25, 4th-year BSIT student at Philippine Christian University, aspiring web & software developer building accessible modern websites.
 - Designer: Canva, Figma, Photoshop, Premiere Pro. Frontend: HTML, CSS, JavaScript, Sass, Tailwind, Bootstrap, VS Code, GitHub. Backend: Java, C#, PHP, Python, SQL, Eclipse, NetBeans, SSMS, SQLite.
 - PROJECT-S.W.I.F.T: Java console school management system, group project. github.com/GouuuM/PROJECT-S.W.I.F.T
-- Portfolio UI/UX: this very site, HTML/CSS/vanilla JS, dark+light themes. github.com/GouuuM/Webportfolio
+- Portfolio UI/UX: this very site, HTML/CSS/vanilla JS, single merged dark theme. github.com/GouuuM/Webportfolio
 - ByteLodge: group project C# hotel reservation system (room booking, availability, management). github.com/joseherga/Hotel-Reservation
 - TravelEase: group project mobile booking system UI in Figma, HCI final (search + booking flow, prototype).
 - Certificates & Milestones: OOP Certificate of Recognition (COI-PCU, April 30 2025), JPCS-PCU bona fide membership (A.Y. 2024-2025), plus Emerald 1 at 65 LP in LoL and Worlds 2024.
@@ -22,38 +24,40 @@ If asked about anything unrelated to Toni, deflect playfully in one line and ste
 module.exports = async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method === 'GET' && req.query && req.query.diag) {
-    return res.status(200).json({ hasKey: !!process.env.GEMINI_API_KEY, model: MODEL });
+    return res.status(200).json({ hasKey: !!process.env.OPENCODE_API_KEY, model: MODEL });
   }
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
-  const key = process.env.GEMINI_KEY_API || process.env.GEMINI_API_KEY;
+  const key = process.env.OPENCODE_API_KEY;
   if (!key) return res.status(500).json({ error: 'AI not configured' });
   const body = req.body || {};
   const text = String(body.message || '').slice(0, 500).trim();
   if (!text) return res.status(400).json({ error: 'empty' });
-  const contents = [
+  const messages = [
+    { role: 'system', content: SYSTEM },
     ...(Array.isArray(body.history) ? body.history.slice(-6).map(m => ({
-      role: m.role === 'bot' ? 'model' : 'user',
-      parts: [{ text: String(m.text || '').slice(0, 500) }],
+      role: m.role === 'bot' ? 'assistant' : 'user',
+      content: String(m.text || '').slice(0, 500),
     })) : []),
-    { role: 'user', parts: [{ text }] },
+    { role: 'user', content: text },
   ];
   try {
-    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`, {
+    const r = await fetch(ENDPOINT, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
       body: JSON.stringify({
-        system_instruction: { parts: [{ text: SYSTEM }] },
-        contents,
-        generationConfig: { maxOutputTokens: 500, temperature: 0.8 },
+        model: MODEL,
+        messages,
+        max_tokens: 500,
+        temperature: 0.8,
       }),
     });
     if (!r.ok) {
       const body = await r.text().catch(() => '');
-      console.error('Gemini upstream', r.status, body.slice(0, 300));
+      console.error('Zen upstream', r.status, body.slice(0, 300));
       return res.status(502).json({ error: 'AI upstream error', upstream: r.status });
     }
     const j = await r.json();
-    const out = (j.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('').trim();
+    const out = (j.choices?.[0]?.message?.content || '').trim();
     if (!out) return res.status(502).json({ error: 'empty reply' });
     return res.status(200).json({ reply: out });
   } catch {

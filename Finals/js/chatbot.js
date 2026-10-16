@@ -82,7 +82,7 @@ const RULES = [
   ]},
   { k: ['portfolio', 'website', 'this site', 'personal site', 'webportfolio'], a: [
     "This very site! His Portfolio UI/UX — HTML, CSS, vanilla JS, single merged dark theme, flip cards and all. Code: github.com/GouuuM/Webportfolio",
-    "The portfolio? That's this page! Hand-built with HTML/CSS/JS — responsive layout, dual themes, zero frameworks. github.com/GouuuM/Webportfolio",
+    "The portfolio? That's this page! Hand-built with HTML/CSS/JS — responsive layout, single merged dark theme, zero frameworks. github.com/GouuuM/Webportfolio",
     "Portfolio UI/UX — Toni's personal site, built from scratch to practice semantic HTML and CSS systems. You're looking at it! Code at github.com/GouuuM/Webportfolio"
   ]},
   { k: ['project', 'work', 'built', 'what has he built', 'what has he done', 'what did he build', 'what did he make', 'made', 'created', 'done', 'showcase', 'worked on', 'work on'], a: [
@@ -127,7 +127,7 @@ const RULES = [
   ]},
   { k: ['paramore', 'hayley', 'misery business', 'riot', 'after laughter', 'still into you'], a: [
     "Paramore! Hayley Williams and co. — pure adrenaline for long sessions. Misery Business mode: ON. Their card's on the site!",
-    "Paramore goes hard! Riot! energy pushes Toni through the toughest bugs. Dark mode is their era here!",
+    "Paramore goes hard! Riot! energy pushes Toni through the toughest bugs. Riot red is their color here!",
     "P-More! High-octane rock for debugging marathons. Still Into You on repeat, allegedly!"
   ]},
   { k: ['mcr', 'my chemical romance', 'black parade', 'gerard', 'na na na', 'danger days'], a: [
