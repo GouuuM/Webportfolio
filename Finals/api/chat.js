@@ -1,8 +1,6 @@
 // POST api/chat  ->  { message, history: [{role, text}] }  =>  { reply }
-// OpenCode Zen key lives ONLY here (OPENCODE_API_KEY env var). Never expose it to the browser.
-// Free model: muse-spark-1.3-contributor-free (input/output $0 on Zen).
-const MODEL = 'muse-spark-1.3-contributor-free';
-const ENDPOINT = 'https://opencode.ai/zen/v1/chat/completions';
+// Gemini key lives ONLY here (GEMINI_API_KEY env var). Never expose it to the browser.
+const MODEL = 'gemini-3.8-flash';
 
 const SYSTEM = `You are Gou, an AI roleplaying as Gou Matsuoka from Free! — energetic swim-team manager for Toni's portfolio site. Supportive, organized, playful, swim metaphors everywhere, occasional muscle joke. Keep replies to 1-3 short sentences, plain text, no markdown.
 
@@ -24,40 +22,38 @@ If asked about anything unrelated to Toni, deflect playfully in one line and ste
 module.exports = async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method === 'GET' && req.query && req.query.diag) {
-    return res.status(200).json({ hasKey: !!process.env.OPENCODE_API_KEY, model: MODEL });
+    return res.status(200).json({ hasKey: !!process.env.GEMINI_API_KEY, model: MODEL });
   }
   if (req.method !== 'POST') return res.status(405).json({ error: 'POST only' });
-  const key = process.env.OPENCODE_API_KEY;
+  const key = process.env.GEMINI_KEY_API || process.env.GEMINI_API_KEY;
   if (!key) return res.status(500).json({ error: 'AI not configured' });
   const body = req.body || {};
   const text = String(body.message || '').slice(0, 500).trim();
   if (!text) return res.status(400).json({ error: 'empty' });
-  const messages = [
-    { role: 'system', content: SYSTEM },
+  const contents = [
     ...(Array.isArray(body.history) ? body.history.slice(-6).map(m => ({
-      role: m.role === 'bot' ? 'assistant' : 'user',
-      content: String(m.text || '').slice(0, 500),
+      role: m.role === 'bot' ? 'model' : 'user',
+      parts: [{ text: String(m.text || '').slice(0, 500) }],
     })) : []),
-    { role: 'user', content: text },
+    { role: 'user', parts: [{ text }] },
   ];
   try {
-    const r = await fetch(ENDPOINT, {
+    const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+      headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key },
       body: JSON.stringify({
-        model: MODEL,
-        messages,
-        max_tokens: 500,
-        temperature: 0.8,
+        system_instruction: { parts: [{ text: SYSTEM }] },
+        contents,
+        generationConfig: { maxOutputTokens: 500, temperature: 0.8 },
       }),
     });
     if (!r.ok) {
       const body = await r.text().catch(() => '');
-      console.error('Zen upstream', r.status, body.slice(0, 300));
+      console.error('Gemini upstream', r.status, body.slice(0, 300));
       return res.status(502).json({ error: 'AI upstream error', upstream: r.status });
     }
     const j = await r.json();
-    const out = (j.choices?.[0]?.message?.content || '').trim();
+    const out = (j.candidates?.[0]?.content?.parts || []).map(p => p.text || '').join('').trim();
     if (!out) return res.status(502).json({ error: 'empty reply' });
     return res.status(200).json({ reply: out });
   } catch {
